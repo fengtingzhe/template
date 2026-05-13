@@ -22,10 +22,11 @@
 8. `DESIGN_HUB/09_DECISIONS.md`
 9. `DESIGN_HUB/12_DEMO_SCOPE.md`
 10. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
-11. `AI_TASKS/CURRENT_TASK.md`
-12. `AI_TASKS/CHANGELOG.md`
-13. `AI_TASKS/DEV_LOG.md`
-14. `AI_RULES/06_VALIDATION_CHECKLIST.md`
+11. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
+12. `AI_TASKS/CURRENT_TASK.md`
+13. `AI_TASKS/CHANGELOG.md`
+14. `AI_TASKS/DEV_LOG.md`
+15. `AI_RULES/06_VALIDATION_CHECKLIST.md`
 
 ---
 
@@ -74,6 +75,27 @@
 
 ---
 
+## 默认开发辅助功能要求
+
+如果本轮涉及 Web Demo，默认应参考：
+
+```text
+DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+```
+
+默认要求：
+
+```text
+提供 run_web_demo.bat，或明确说明本轮暂不需要；
+run_web_demo.bat 用于启动 Vite 或等价本地 Web 服务；
+run_web_demo.bat 启动后应自动打开 Demo 网页；
+run_web_demo.bat 不得依赖个人电脑绝对路径；
+不要要求用户直接双击 index.html 运行 Demo；
+如本轮包含测试，应提供或更新 Smoke Test。
+```
+
+---
+
 ## 通用 Console 要求
 
 如果本轮涉及可运行 Demo 界面，默认应包含 `Console` / `Dev` 按钮。
@@ -100,11 +122,12 @@
 
 1. 待填写；
 2. 待填写；
-3. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
-4. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
-5. 已更新 `AI_TASKS/CHANGELOG.md`；
-6. 已更新 `AI_TASKS/DEV_LOG.md`；
-7. 已更新 `AI_TASKS/CURRENT_TASK.md`。
+3. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
+4. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
+5. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
+6. 已更新 `AI_TASKS/CHANGELOG.md`；
+7. 已更新 `AI_TASKS/DEV_LOG.md`；
+8. 已更新 `AI_TASKS/CURRENT_TASK.md`。
 
 ---
 
