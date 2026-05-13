@@ -54,6 +54,7 @@ ProjectName/
 ├── DESIGN_HUB/
 ├── AI_RULES/
 ├── AI_TASKS/
+├── WEB_DEMO/
 ├── Docs/
 ├── Data/
 ├── Assets/
@@ -71,9 +72,11 @@ ProjectName/
 DESIGN_HUB 管方向；
 AI_RULES 管 AI；
 AI_TASKS 管执行；
+WEB_DEMO 管 Web 原型；
 Docs 管资料；
-Data 管配置；
-Scripts / Scenes 管实现。
+Data 管 Godot 或正式项目配置；
+Scripts / Scenes 管 Godot 或正式工程实现；
+Builds 管构建输出。
 ```
 
 ---
@@ -87,15 +90,19 @@ Scripts / Scenes 管实现。
 2. AI_RULES/00_MASTER_PROMPT.md
 3. AI_RULES/01_AI_READ_ORDER.md
 4. AI_RULES/02_AI_EDIT_PERMISSION.md
-5. DESIGN_HUB/00_DESIGN_INDEX.md
-6. DESIGN_HUB/01_PROJECT_BRIEF.md
-7. DESIGN_HUB/02_CORE_GAMEPLAY.md
-8. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
-9. DESIGN_HUB/09_DECISIONS.md
-10. DESIGN_HUB/10_OPEN_QUESTIONS.md
-11. AI_TASKS/CURRENT_TASK.md
-12. AI_TASKS/NEXT_CODEX_PROMPT.md
-13. AI_RULES/06_VALIDATION_CHECKLIST.md
+5. AI_RULES/07_AI_ROLE_SPLIT.md
+6. DESIGN_HUB/00_DESIGN_INDEX.md
+7. DESIGN_HUB/01_PROJECT_BRIEF.md
+8. DESIGN_HUB/02_CORE_GAMEPLAY.md
+9. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
+10. DESIGN_HUB/09_DECISIONS.md
+11. DESIGN_HUB/10_OPEN_QUESTIONS.md
+12. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+13. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+14. AI_TASKS/CURRENT_TASK.md
+15. AI_TASKS/NEXT_CODEX_PROMPT.md
+16. AI_TASKS/DEEPSEEK_TASKS.md
+17. AI_RULES/06_VALIDATION_CHECKLIST.md
 ```
 
 阅读后，AI 必须先回复：
@@ -104,7 +111,7 @@ Scripts / Scenes 管实现。
 我已理解当前项目目标、目录结构、设计边界、技术规则和本轮任务约束。
 ```
 
-然后才能开始修改文件。
+如果执行者是 Codex，还必须先输出任务归属判断。
 
 ---
 
@@ -150,7 +157,7 @@ DESIGN_HUB/10_OPEN_QUESTIONS.md
 ```text
 ChatGPT：制作人 / 总策划 / 任务拆解 / 产品复审
 Godot：游戏编辑器，Demo 阶段主引擎
-Codex：主程 / 架构 / 代码审核 / Bug 修复
+Codex：主程 / 架构 / 代码审核 / Bug 修复 / AI 任务调度者
 DeepSeek：模块开发 / 批量配置 / 重复性代码
 Figma：UI 原型和界面表达
 Image 2 / 即梦：图片和素材方向
@@ -162,7 +169,40 @@ GitHub：代码版本管理
 
 ---
 
-# 6. 引擎选择原则
+# 6. Codex 任务归属判断规则
+
+Codex 不只是执行者，也是项目主程和任务调度者。
+
+每次 Codex 阅读完 `AI_TASKS/NEXT_CODEX_PROMPT.md` 后，必须先判断本轮任务的执行归属。
+
+Codex 必须在正式开发前输出：
+
+```text
+任务归属判断：
+- 本轮由 Codex 自己开发 / 拆分给 DeepSeek / Codex + DeepSeek 协作
+- 判断理由：
+- Codex 负责：
+- DeepSeek 负责：
+- Codex 审核方式：
+```
+
+判断原则：
+
+```text
+核心架构、跨文件整合、状态管理、复杂 Bug 修复、最终合并：优先 Codex；
+普通 UI 组件、重复性代码、配置表、文案、简单工具函数：可以拆给 DeepSeek；
+DeepSeek 产物必须由 Codex 审核后才能合并。
+```
+
+如本轮需要 DeepSeek 执行子任务，必须在以下文件记录任务卡：
+
+```text
+AI_TASKS/DEEPSEEK_TASKS.md
+```
+
+---
+
+# 7. 引擎选择原则
 
 当前工作流的目标是快速搭建可试玩、可展示、可验证的游戏 Demo，而不是一开始完成复杂商业化游戏。
 
@@ -182,7 +222,7 @@ Unity 更适合进入商业化开发阶段后再评估。
 
 ---
 
-# 7. Demo 阶段划分
+# 8. Demo 阶段划分
 
 本项目采用“先 Web Demo，后 Godot Demo”的开发策略。
 
@@ -198,13 +238,30 @@ Unity 更适合进入商业化开发阶段后再评估。
 - 快速进行试玩反馈；
 - 为 Godot Demo 提供明确方向。
 
-默认目录：
+默认独立工作区：
 
 ```text
-Builds/web-demo/
-Data/config/
-Tools/
-Tests/
+WEB_DEMO/
+├── README.md
+├── run_web_demo.bat
+├── package.json
+├── index.html
+├── styles.css
+├── game.js
+├── Data/
+├── Assets/
+├── Tools/
+├── Tests/
+├── Docs/
+└── Temp/
+```
+
+Web Demo 不应与 Godot 工程文件混放。
+
+详细规则见：
+
+```text
+DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 ```
 
 ## Godot Demo 阶段
@@ -221,7 +278,7 @@ Tests/
 
 ---
 
-# 8. NEXT_CODEX_PROMPT 使用规则
+# 9. NEXT_CODEX_PROMPT 使用规则
 
 `AI_TASKS/NEXT_CODEX_PROMPT.md` 用于保存下一轮交给 Codex 执行的完整提示词。
 
@@ -233,6 +290,7 @@ Codex 执行任务时，应优先读取：
 - `AI_TASKS/CURRENT_TASK.md`
 - `AI_TASKS/CHANGELOG.md`
 - `AI_TASKS/DEV_LOG.md`
+- `AI_TASKS/DEEPSEEK_TASKS.md`
 
 执行完成后，Codex 应更新：
 
@@ -240,10 +298,12 @@ Codex 执行任务时，应优先读取：
 - `AI_TASKS/CHANGELOG.md`
 - `AI_TASKS/DEV_LOG.md`
 - 必要时更新 `AI_TASKS/NEXT_CODEX_PROMPT.md`
+- 如涉及 DeepSeek 任务拆分，更新 `AI_TASKS/DEEPSEEK_TASKS.md`
+- 如涉及 DeepSeek 产物审核，更新 `AI_TASKS/REVIEW_LOG.md`
 
 ---
 
-# 9. 通用 Debug Console 规则
+# 10. 通用 Debug Console 规则
 
 所有 Demo 默认应提供一个 `Console` / `Dev` 按钮，作为开发者工具入口。
 
@@ -275,7 +335,7 @@ DESIGN_HUB/13_DEBUG_CONSOLE.md
 
 ---
 
-# 10. 默认开发辅助功能
+# 11. 默认开发辅助功能
 
 所有项目默认应具备一组不属于具体玩法的开发辅助能力。
 
@@ -299,7 +359,7 @@ Smoke Test；
 Web Demo 阶段默认提供：
 
 ```text
-run_web_demo.bat
+WEB_DEMO/run_web_demo.bat
 ```
 
 作用：
@@ -307,7 +367,7 @@ run_web_demo.bat
 ```text
 启动 Vite 或等价本地 Web 服务；
 自动打开 Demo 网页；
-避免直接双击 index.html 导致路径或权限问题；
+避免直接双击 WEB_DEMO/index.html 导致路径或权限问题；
 不依赖个人电脑绝对路径。
 ```
 
@@ -319,14 +379,15 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 
 ---
 
-# 11. 当前已确认的通用边界摘要
+# 12. 当前已确认的通用边界摘要
 
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
 Demo 重点：核心玩法、界面流程、关键反馈、表现方向。
 开发顺序：先 Web Demo，后 Godot Demo。
-AI 分工：ChatGPT 管方案，Codex 管工程，DeepSeek 管模块，策划管方向和体验。
+AI 分工：ChatGPT 管方案，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
 修改原则：AI 不确定时写入 OPEN_QUESTIONS，不得擅自改核心方向。
 Console 原则：只默认包含通用开发者工具，项目特定调试功能需单独确认。
 默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
+Web Demo 路径原则：Web Demo 使用 WEB_DEMO/ 独立工作区，不与 Godot 工程混放。
 ```
