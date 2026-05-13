@@ -30,28 +30,18 @@
 Web Demo 阶段默认提供一个 Windows bat 文件：
 
 ```text
-run_web_demo.bat
+WEB_DEMO/run_web_demo.bat
 ```
 
-推荐位置：
+为了让 Web Demo 原型工程保持独立，`run_web_demo.bat` 默认放在 `WEB_DEMO/` 内。
 
-```text
-run_web_demo.bat
-```
-
-也可以根据项目需要放在：
-
-```text
-Tools/run_web_demo.bat
-```
-
-为了让非程序用户最容易找到，默认推荐放在项目根目录。
+如果项目需要，也可以额外在根目录提供一个转发 bat，但根目录 bat 不应包含具体业务逻辑，只应调用 `WEB_DEMO/run_web_demo.bat`。
 
 ---
 
 ## run_web_demo.bat 默认目标
 
-`run_web_demo.bat` 的作用是：
+`WEB_DEMO/run_web_demo.bat` 的作用是：
 
 ```text
 1. 检查当前目录；
@@ -65,29 +55,30 @@ Tools/run_web_demo.bat
 
 ## Web Demo 默认目录
 
+Web Demo 默认使用独立工作区：
+
 ```text
-Builds/web-demo/
+WEB_DEMO/
+├── README.md
+├── run_web_demo.bat
+├── package.json
 ├── index.html
 ├── styles.css
-└── game.js
+├── game.js
+├── Data/
+│   └── config/
+│       └── web_demo_balance.json
+├── Assets/
+├── Tools/
+├── Tests/
+├── Docs/
+└── Temp/
 ```
 
-配置文件默认放在：
+详细目录规则见：
 
 ```text
-Data/config/
-```
-
-测试脚本默认放在：
-
-```text
-Tests/
-```
-
-工具脚本默认放在：
-
-```text
-Tools/
+DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 ```
 
 ---
@@ -100,7 +91,7 @@ Web Demo 阶段默认使用 Vite 或等价的本地 Web 服务。
 
 ```text
 不要直接双击 index.html 运行；
-优先通过 run_web_demo.bat 启动本地服务；
+优先通过 WEB_DEMO/run_web_demo.bat 启动本地服务；
 避免浏览器本地文件权限导致配置加载失败；
 bat 文件应自动打开浏览器；
 bat 文件不得依赖个人电脑的绝对路径。
@@ -144,6 +135,12 @@ Demo 页面可以打开；
 基础交互按钮存在。
 ```
 
+Smoke Test 默认位置：
+
+```text
+WEB_DEMO/Tests/web-demo-smoke.mjs
+```
+
 Smoke Test 不代替正式测试，只用于快速确认 Demo 是否能跑。
 
 ---
@@ -157,7 +154,9 @@ Smoke Test 不代替正式测试，只用于快速确认 Demo 是否能跑。
 不要把项目特定作弊功能默认放入模板；
 不要因为开发辅助功能引入复杂依赖；
 不要把 Web Demo 启动方式绑定到某台电脑的本地路径；
-不要默认要求安装复杂工具链，除非任务明确允许。
+不要默认要求安装复杂工具链，除非任务明确允许；
+不要把 Web Demo 源码放入 Builds/；
+不要把 Web Demo 配置、工具和测试散落到根目录 Data/、Tools/、Tests/。
 ```
 
 ---
