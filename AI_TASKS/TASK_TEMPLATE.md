@@ -91,6 +91,25 @@ AI_TASKS/NEXT_CODEX_PROMPT.md
 
 ---
 
+## 默认开发辅助功能要求
+
+如果本任务涉及 Web Demo，默认应参考：
+
+```text
+DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+```
+
+默认要求：
+
+- [ ] 提供 `run_web_demo.bat`，或明确说明本轮暂不需要；
+- [ ] `run_web_demo.bat` 用于启动 Vite 或等价本地 Web 服务；
+- [ ] `run_web_demo.bat` 启动后应自动打开 Demo 网页；
+- [ ] `run_web_demo.bat` 不得依赖个人电脑绝对路径；
+- [ ] 不要求用户直接双击 `index.html` 运行 Demo；
+- [ ] 如本轮包含测试，应提供或更新 Smoke Test。
+
+---
+
 ## 通用 Console 要求
 
 如果本任务涉及可运行 Demo 界面，默认应包含通用 `Console` / `Dev` 按钮。
