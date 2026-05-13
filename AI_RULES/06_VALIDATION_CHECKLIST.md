@@ -36,7 +36,9 @@
 
 ## 数据检查
 
-- [ ] 数值来自 `Data/` 或配置文件；
+- [ ] 数值来自对应 Demo 工作区内的配置文件；
+- [ ] Web Demo 数值优先来自 `WEB_DEMO/Data/config/`；
+- [ ] Godot Demo 数值优先来自根目录 `Data/` 或 Godot 专用配置；
 - [ ] 没有大量硬编码；
 - [ ] 修改配置后功能能生效；
 - [ ] 字段含义清楚。
@@ -53,6 +55,28 @@
 
 ---
 
+## Web Demo 独立工作区检查
+
+如果本轮涉及 Web Demo，必须参考：
+
+```text
+DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+```
+
+默认检查：
+
+- [ ] Web Demo 源码位于 `WEB_DEMO/`；
+- [ ] Web Demo 入口位于 `WEB_DEMO/index.html`；
+- [ ] Web Demo 主逻辑位于 `WEB_DEMO/game.js`；
+- [ ] Web Demo 样式位于 `WEB_DEMO/styles.css`；
+- [ ] Web Demo 配置位于 `WEB_DEMO/Data/config/`；
+- [ ] Web Demo 工具脚本位于 `WEB_DEMO/Tools/`；
+- [ ] Web Demo 测试脚本位于 `WEB_DEMO/Tests/`；
+- [ ] 没有把 Web Demo 源码写入 `Builds/`；
+- [ ] 没有把 Web Demo 配置、工具和测试散落到根目录 `Data/`、`Tools/`、`Tests/`。
+
+---
+
 ## 默认开发辅助功能检查
 
 所有 Demo 应参考：
@@ -63,10 +87,10 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 
 如果本轮涉及 Web Demo，默认检查：
 
-- [ ] 存在 `run_web_demo.bat`，或任务明确说明本轮暂不需要；
-- [ ] `run_web_demo.bat` 不依赖个人电脑绝对路径；
+- [ ] 存在 `WEB_DEMO/run_web_demo.bat`，或任务明确说明本轮暂不需要；
+- [ ] `WEB_DEMO/run_web_demo.bat` 不依赖个人电脑绝对路径；
 - [ ] Web Demo 可以通过 Vite 或等价本地 Web 服务启动；
-- [ ] 不要求用户直接双击 `index.html` 运行 Demo；
+- [ ] 不要求用户直接双击 `WEB_DEMO/index.html` 运行 Demo；
 - [ ] 如存在 Smoke Test，脚本可以用于快速确认 Demo 是否能打开；
 - [ ] Demo 版本号或当前版本状态可以被开发者识别。
 
@@ -102,4 +126,7 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 - [ ] 已说明验证方式；
 - [ ] 已更新 `AI_TASKS/CHANGELOG.md`；
 - [ ] 已读取或更新 `AI_TASKS/NEXT_CODEX_PROMPT.md`，如本轮任务涉及 Codex；
+- [ ] Codex 已进行任务归属判断；
+- [ ] 如任务拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
+- [ ] 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
 - [ ] 不确定问题已写入 `DESIGN_HUB/10_OPEN_QUESTIONS.md`。
