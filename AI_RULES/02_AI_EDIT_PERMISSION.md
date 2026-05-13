@@ -9,6 +9,7 @@
 前提是任务明确允许：
 
 ```text
+WEB_DEMO/
 Scripts/
 Data/
 AI_TASKS/CHANGELOG.md
@@ -16,6 +17,7 @@ AI_TASKS/DEV_LOG.md
 AI_TASKS/REVIEW_LOG.md
 AI_TASKS/CURRENT_TASK.md
 AI_TASKS/NEXT_CODEX_PROMPT.md
+AI_TASKS/DEEPSEEK_TASKS.md
 Tests/
 Tools/
 Temp/
@@ -43,6 +45,16 @@ Codex 可以在任务完成后：
 ```text
 DESIGN_HUB/10_OPEN_QUESTIONS.md
 ```
+
+---
+
+## DEEPSEEK_TASKS 修改限制
+
+`AI_TASKS/DEEPSEEK_TASKS.md` 用于记录 Codex 拆分给 DeepSeek 的任务。
+
+Codex 可以新增、更新 DeepSeek 任务卡，但不得用该文件绕过人类已确认的设计边界。
+
+DeepSeek 产物必须由 Codex 审核后才能合并。
 
 ---
 
@@ -97,15 +109,41 @@ AI 修改 `.tscn` 文件前必须说明：
 
 Web Demo 阶段默认版本号为 `v0.x`。
 
-Web Demo 文件通常位于：
+Web Demo 是独立原型工程，默认位于：
 
 ```text
-Builds/web-demo/
-Data/config/
-Tools/
-Tests/
+WEB_DEMO/
+```
+
+Web Demo 内部推荐结构：
+
+```text
+WEB_DEMO/
+├── README.md
+├── run_web_demo.bat
+├── package.json
+├── index.html
+├── styles.css
+├── game.js
+├── Data/
+├── Assets/
+├── Tools/
+├── Tests/
+├── Docs/
+└── Temp/
 ```
 
 Web Demo 阶段优先使用 HTML + CSS + 原生 JavaScript 快速验证核心玩法。
 
 未经明确允许，不要引入 React、Phaser、Three.js 或复杂 npm 依赖。
+
+未经明确允许，不要把 Web Demo 源码写入：
+
+```text
+Builds/web-demo/
+根目录 Data/config/
+根目录 Tools/
+根目录 Tests/
+```
+
+`Builds/` 应优先作为构建输出目录，而不是 Web Demo 源码目录。
