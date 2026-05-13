@@ -133,3 +133,11 @@ Demo 目标与范围。
 默认开发辅助功能。
 
 用于记录所有项目默认应该具备的开发辅助能力，例如 Console / Dev 面板、Web Demo 一键启动 bat、Vite 本地服务、Smoke Test、版本号显示等。
+
+---
+
+## 15_WEB_DEMO_WORKSPACE.md
+
+Web Demo 独立工作区规则。
+
+用于定义 `WEB_DEMO/` 目录结构、路径规范、旧路径迁移规则，以及 Web Demo 与 Godot 工程分离的边界。
