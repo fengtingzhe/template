@@ -267,9 +267,59 @@ FPS 显示规则：
 
 特定游戏相关功能，例如加资源、跳转时间、生成敌人、解锁节点等，不属于通用 Console 规则。如某个项目需要，应在该项目的任务卡或 `DESIGN_HUB/10_OPEN_QUESTIONS.md` 中单独确认。
 
+详细规则见：
+
+```text
+DESIGN_HUB/13_DEBUG_CONSOLE.md
+```
+
 ---
 
-# 10. 当前已确认的通用边界摘要
+# 10. 默认开发辅助功能
+
+所有项目默认应具备一组不属于具体玩法的开发辅助能力。
+
+这些功能用于提高 Demo 开发、调试、测试和展示效率。
+
+默认开发辅助功能包括：
+
+```text
+Console / Dev 面板；
+FPS 显示；
+音乐开关；
+音效开关；
+暂停 / 继续；
+重置场景 / Demo；
+Web Demo 一键启动 bat；
+Vite 或等价本地 Web 服务；
+Smoke Test；
+版本号显示。
+```
+
+Web Demo 阶段默认提供：
+
+```text
+run_web_demo.bat
+```
+
+作用：
+
+```text
+启动 Vite 或等价本地 Web 服务；
+自动打开 Demo 网页；
+避免直接双击 index.html 导致路径或权限问题；
+不依赖个人电脑绝对路径。
+```
+
+详细规则见：
+
+```text
+DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+```
+
+---
+
+# 11. 当前已确认的通用边界摘要
 
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
@@ -278,4 +328,5 @@ Demo 重点：核心玩法、界面流程、关键反馈、表现方向。
 AI 分工：ChatGPT 管方案，Codex 管工程，DeepSeek 管模块，策划管方向和体验。
 修改原则：AI 不确定时写入 OPEN_QUESTIONS，不得擅自改核心方向。
 Console 原则：只默认包含通用开发者工具，项目特定调试功能需单独确认。
+默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
 ```
