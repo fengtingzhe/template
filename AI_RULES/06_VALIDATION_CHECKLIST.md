@@ -53,6 +53,25 @@
 
 ---
 
+## 默认开发辅助功能检查
+
+所有 Demo 应参考：
+
+```text
+DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+```
+
+如果本轮涉及 Web Demo，默认检查：
+
+- [ ] 存在 `run_web_demo.bat`，或任务明确说明本轮暂不需要；
+- [ ] `run_web_demo.bat` 不依赖个人电脑绝对路径；
+- [ ] Web Demo 可以通过 Vite 或等价本地 Web 服务启动；
+- [ ] 不要求用户直接双击 `index.html` 运行 Demo；
+- [ ] 如存在 Smoke Test，脚本可以用于快速确认 Demo 是否能打开；
+- [ ] Demo 版本号或当前版本状态可以被开发者识别。
+
+---
+
 ## 通用 Debug Console 检查
 
 所有 Demo 默认应提供一个 `Console` / `Dev` 按钮，作为开发者工具入口。
