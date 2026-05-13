@@ -103,6 +103,8 @@ AI_TASKS/NEXT_CODEX_PROMPT.md
 - [ ] 重置场景 / 重置 Demo
 - [ ] 显示 FPS
 
+当开启 FPS 显示后，FPS 数值应显示在游戏画面的右下角。
+
 特定游戏功能不应默认加入 Console，除非本任务明确要求。
 
 ---
