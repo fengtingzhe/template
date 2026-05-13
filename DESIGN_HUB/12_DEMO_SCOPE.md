@@ -59,12 +59,21 @@ v0.x / Web Demo
 
 ## Web Demo 技术约束
 
+- Web Demo 是独立原型工程，默认放在 `WEB_DEMO/`；
 - 优先使用 HTML + CSS + 原生 JavaScript；
 - 不引入 React、Phaser、Three.js 或复杂 npm 依赖，除非明确允许；
-- 所有核心数值优先放入 `Data/config/`；
-- Demo 输出放在 `Builds/web-demo/`；
-- 工具脚本放在 `Tools/`；
-- 测试脚本放在 `Tests/`。
+- Web Demo 配置优先放入 `WEB_DEMO/Data/config/`；
+- Web Demo 工具脚本放入 `WEB_DEMO/Tools/`；
+- Web Demo 测试脚本放入 `WEB_DEMO/Tests/`；
+- Web Demo 启动脚本放入 `WEB_DEMO/run_web_demo.bat`；
+- 不要把 Web Demo 源码放入 `Builds/`；
+- `Builds/` 只作为构建输出目录。
+
+默认结构见：
+
+```text
+DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+```
 
 ---
 
@@ -86,4 +95,5 @@ v0.x / Web Demo
 - [ ] 能展示主要 UI 信息；
 - [ ] 能展示关键反馈；
 - [ ] 能通过 smoke test；
-- [ ] 能让策划判断下一轮迭代方向。
+- [ ] 能让策划判断下一轮迭代方向；
+- [ ] Web Demo 文件位于 `WEB_DEMO/` 独立工作区。
