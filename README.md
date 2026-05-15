@@ -88,6 +88,7 @@ Temp 管临时文件。
 
 ```text
 DESIGN_HUB/00_PROJECT_CANVAS.md
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 ```
 
 然后先进行立项访谈，不直接进入开发。
@@ -103,13 +104,15 @@ ChatGPT 读取 DESIGN_HUB/00_PROJECT_CANVAS.md
 ↓
 ChatGPT 向用户提问：类型、题材、目标用户、核心玩法、参考产品、最小 Demo 目标
 ↓
+ChatGPT 同时分析：这个项目需要哪些辅助工具，才能让策划高效迭代
+↓
 用户回答
 ↓
-ChatGPT 整理立项档案草案
+ChatGPT 整理立项档案草案和辅助工具规划草案
 ↓
 用户确认
 ↓
-ChatGPT 写入 00_PROJECT_CANVAS.md
+ChatGPT 写入 00_PROJECT_CANVAS.md 和 17_AUXILIARY_TOOLS_PLAN.md
 ↓
 ChatGPT 提炼 01_PROJECT_BRIEF / 02_CORE_GAMEPLAY / 03_PLAYER_EXPERIENCE / 12_DEMO_SCOPE
 ↓
@@ -129,13 +132,19 @@ Codex 开始 WEB_DEMO/ 开发
 
 `00_PROJECT_CANVAS.md` 是项目立项档案、想法池和持续 idea 记录区。
 
+`17_AUXILIARY_TOOLS_PLAN.md` 是项目辅助工具规划文件，用于记录关卡编辑器、数值模拟器、配置工具、内容批量生成工具、自动测试工具、难度评估工具等。
+
 后续有新的想法时，应优先追加到：
 
 ```text
 DESIGN_HUB/00_PROJECT_CANVAS.md
 ```
 
-再根据确认结果提炼到正式设计文件。
+如果新想法涉及工具、编辑器、模拟器、批量配置或自动测试，应同步评估是否写入：
+
+```text
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+```
 
 ---
 
@@ -160,10 +169,11 @@ DESIGN_HUB/00_PROJECT_CANVAS.md
 14. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 15. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 16. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
-17. AI_TASKS/CURRENT_TASK.md
-18. AI_TASKS/NEXT_CODEX_PROMPT.md
-19. AI_TASKS/DEEPSEEK_TASKS.md
-20. AI_RULES/06_VALIDATION_CHECKLIST.md
+17. DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+18. AI_TASKS/CURRENT_TASK.md
+19. AI_TASKS/NEXT_CODEX_PROMPT.md
+20. AI_TASKS/DEEPSEEK_TASKS.md
+21. AI_RULES/06_VALIDATION_CHECKLIST.md
 ```
 
 阅读后，AI 必须先回复：
@@ -175,7 +185,7 @@ DESIGN_HUB/00_PROJECT_CANVAS.md
 如果是新项目立项阶段，AI 应继续说明：
 
 ```text
-我将先进行立项访谈，暂不进入开发。
+我将先进行立项访谈，暂不进入开发，并会同时分析本项目可能需要的辅助工具。
 ```
 
 如果执行者是 Codex，还必须先输出任务归属判断。
@@ -207,7 +217,8 @@ AI 不可以：
 擅自重构项目目录结构；
 擅自删除已确认设计；
 擅自替换已经确认的方案；
-新项目未完成立项访谈就直接进入开发。
+新项目未完成立项访谈就直接进入开发；
+新项目未进行辅助工具需求分析就直接进入开发。
 ```
 
 如果 AI 不确定，应写入：
@@ -223,7 +234,7 @@ DESIGN_HUB/10_OPEN_QUESTIONS.md
 # 6. 当前推荐主工作流
 
 ```text
-ChatGPT：制作人 / 总策划 / 立项访谈 / 任务拆解 / 产品复审
+ChatGPT：制作人 / 总策划 / 立项访谈 / 辅助工具规划 / 任务拆解 / 产品复审
 Codex：Web Demo 主开发 / Unity 源码体检 / 兼容性修复 / 代码审核 / AI 任务调度者
 DeepSeek：模块开发 / 批量配置 / 重复性代码 / 文档整理
 Figma：UI 原型和界面表达
@@ -329,10 +340,17 @@ WEB_DEMO/
 └── Temp/
 ```
 
+辅助工具如关卡编辑器、数值模拟器、配置校验器等，Web 阶段优先放在：
+
+```text
+WEB_DEMO/Tools/
+```
+
 详细规则见：
 
 ```text
 DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 ```
 
 ## v1.x：Unity 源码学习 / 改造阶段
@@ -463,25 +481,24 @@ Smoke Test；
 版本号显示。
 ```
 
-Web Demo 阶段默认提供：
+根据项目类型，立项阶段还应分析是否需要：
 
 ```text
-WEB_DEMO/run_web_demo.bat
-```
-
-作用：
-
-```text
-启动 Vite 或等价本地 Web 服务；
-自动打开 Demo 网页；
-避免直接双击 WEB_DEMO/index.html 导致路径或权限问题；
-不依赖个人电脑绝对路径。
+关卡编辑器；
+棋盘 / 地图 / 房间编辑器；
+数值模拟器；
+配置表编辑器；
+内容批量生成工具；
+自动试玩 / 难度评估工具；
+随机种子回放工具；
+导入 / 导出 JSON、CSV 或 Excel 工具。
 ```
 
 详细规则见：
 
 ```text
 DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 ```
 
 ---
@@ -490,13 +507,14 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
-项目启动：新项目先通过 00_PROJECT_CANVAS.md 完成立项访谈。
+项目启动：新项目先通过 00_PROJECT_CANVAS.md 完成立项访谈，并通过 17_AUXILIARY_TOOLS_PLAN.md 分析辅助工具需求。
 Demo 重点：核心玩法、界面流程、关键反馈、表现方向。
 开发顺序：Web Demo → Unity 源码学习 / 改造 → Unity 独立原型。
-AI 分工：ChatGPT 管立项访谈、方案和任务拆解，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
+AI 分工：ChatGPT 管立项访谈、辅助工具规划、方案和任务拆解，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
 修改原则：AI 不确定时写入 OPEN_QUESTIONS，不得擅自改核心方向。
 Console 原则：只默认包含通用开发者工具，项目特定调试功能需单独确认。
 默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
+辅助工具原则：立项阶段就要判断项目是否需要关卡编辑器、数值模拟器、配置工具、自动测试或内容批量生成工具。
 Web Demo 路径原则：Web Demo 使用 WEB_DEMO/ 独立工作区。
 Unity 路线原则：先做源码学习 / 改造，不默认从 0 创建 Unity 项目。
 根目录瘦身原则：不要在根目录默认创建具体工程目录，具体文件应放入 WEB_DEMO/、UNITY_SOURCE/ 或 UNITY_PROJECT/ 内部。
