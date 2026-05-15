@@ -80,7 +80,66 @@ Temp 管临时文件。
 
 ---
 
-# 3. AI 开始工作前必须阅读
+# 3. 新项目启动流程
+
+每个新项目建议开启一个 ChatGPT 项目专属对话。
+
+新对话启动后，ChatGPT 应先读取 GitHub 仓库中的模板文件，尤其是：
+
+```text
+DESIGN_HUB/00_PROJECT_CANVAS.md
+```
+
+然后先进行立项访谈，不直接进入开发。
+
+推荐流程：
+
+```text
+新建 ChatGPT 项目专属对话
+↓
+ChatGPT 读取 GitHub 模板仓库
+↓
+ChatGPT 读取 DESIGN_HUB/00_PROJECT_CANVAS.md
+↓
+ChatGPT 向用户提问：类型、题材、目标用户、核心玩法、参考产品、最小 Demo 目标
+↓
+用户回答
+↓
+ChatGPT 整理立项档案草案
+↓
+用户确认
+↓
+ChatGPT 写入 00_PROJECT_CANVAS.md
+↓
+ChatGPT 提炼 01_PROJECT_BRIEF / 02_CORE_GAMEPLAY / 03_PLAYER_EXPERIENCE / 12_DEMO_SCOPE
+↓
+确认后生成 AI_TASKS/NEXT_CODEX_PROMPT.md
+↓
+Codex 开始 WEB_DEMO/ 开发
+```
+
+关键原则：
+
+```text
+先讨论；
+再确认；
+再写入 GitHub；
+最后才进入开发。
+```
+
+`00_PROJECT_CANVAS.md` 是项目立项档案、想法池和持续 idea 记录区。
+
+后续有新的想法时，应优先追加到：
+
+```text
+DESIGN_HUB/00_PROJECT_CANVAS.md
+```
+
+再根据确认结果提炼到正式设计文件。
+
+---
+
+# 4. AI 开始工作前必须阅读
 
 每次新会话、上下文重置或开始新任务前，AI 必须按顺序阅读：
 
@@ -91,18 +150,20 @@ Temp 管临时文件。
 4. AI_RULES/02_AI_EDIT_PERMISSION.md
 5. AI_RULES/07_AI_ROLE_SPLIT.md
 6. DESIGN_HUB/00_DESIGN_INDEX.md
-7. DESIGN_HUB/01_PROJECT_BRIEF.md
-8. DESIGN_HUB/02_CORE_GAMEPLAY.md
-9. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
-10. DESIGN_HUB/09_DECISIONS.md
-11. DESIGN_HUB/10_OPEN_QUESTIONS.md
-12. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
-13. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
-14. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
-15. AI_TASKS/CURRENT_TASK.md
-16. AI_TASKS/NEXT_CODEX_PROMPT.md
-17. AI_TASKS/DEEPSEEK_TASKS.md
-18. AI_RULES/06_VALIDATION_CHECKLIST.md
+7. DESIGN_HUB/00_PROJECT_CANVAS.md
+8. DESIGN_HUB/01_PROJECT_BRIEF.md
+9. DESIGN_HUB/02_CORE_GAMEPLAY.md
+10. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
+11. DESIGN_HUB/09_DECISIONS.md
+12. DESIGN_HUB/10_OPEN_QUESTIONS.md
+13. DESIGN_HUB/12_DEMO_SCOPE.md
+14. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+15. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+16. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+17. AI_TASKS/CURRENT_TASK.md
+18. AI_TASKS/NEXT_CODEX_PROMPT.md
+19. AI_TASKS/DEEPSEEK_TASKS.md
+20. AI_RULES/06_VALIDATION_CHECKLIST.md
 ```
 
 阅读后，AI 必须先回复：
@@ -111,11 +172,17 @@ Temp 管临时文件。
 我已理解当前项目目标、目录结构、设计边界、技术规则和本轮任务约束。
 ```
 
+如果是新项目立项阶段，AI 应继续说明：
+
+```text
+我将先进行立项访谈，暂不进入开发。
+```
+
 如果执行者是 Codex，还必须先输出任务归属判断。
 
 ---
 
-# 4. AI 工作基本原则
+# 5. AI 工作基本原则
 
 AI 可以：
 
@@ -139,7 +206,8 @@ AI 不可以：
 擅自改变核心技术架构；
 擅自重构项目目录结构；
 擅自删除已确认设计；
-擅自替换已经确认的方案。
+擅自替换已经确认的方案；
+新项目未完成立项访谈就直接进入开发。
 ```
 
 如果 AI 不确定，应写入：
@@ -152,10 +220,10 @@ DESIGN_HUB/10_OPEN_QUESTIONS.md
 
 ---
 
-# 5. 当前推荐主工作流
+# 6. 当前推荐主工作流
 
 ```text
-ChatGPT：制作人 / 总策划 / 任务拆解 / 产品复审
+ChatGPT：制作人 / 总策划 / 立项访谈 / 任务拆解 / 产品复审
 Codex：Web Demo 主开发 / Unity 源码体检 / 兼容性修复 / 代码审核 / AI 任务调度者
 DeepSeek：模块开发 / 批量配置 / 重复性代码 / 文档整理
 Figma：UI 原型和界面表达
@@ -169,7 +237,7 @@ Unity：v1.x 之后用于源码学习、改造和未来独立原型
 
 ---
 
-# 6. Codex 任务归属判断规则
+# 7. Codex 任务归属判断规则
 
 Codex 不只是执行者，也是项目主程和任务调度者。
 
@@ -202,7 +270,7 @@ AI_TASKS/DEEPSEEK_TASKS.md
 
 ---
 
-# 7. 引擎与工程路线原则
+# 8. 引擎与工程路线原则
 
 当前工作流不再默认要求 Web Demo 之后进入某个游戏引擎从 0 开发。
 
@@ -228,7 +296,7 @@ v4.x = 商业化验证阶段
 
 ---
 
-# 8. Demo 阶段划分
+# 9. Demo 阶段划分
 
 本项目采用“先 Web Demo，再 Unity 源码学习 / 改造”的开发策略。
 
@@ -317,7 +385,7 @@ UNITY_PROJECT/
 
 ---
 
-# 9. NEXT_CODEX_PROMPT 使用规则
+# 10. NEXT_CODEX_PROMPT 使用规则
 
 `AI_TASKS/NEXT_CODEX_PROMPT.md` 用于保存下一轮交给 Codex 执行的完整提示词。
 
@@ -342,7 +410,7 @@ Codex 执行任务时，应优先读取：
 
 ---
 
-# 10. 通用 Debug Console 规则
+# 11. 通用 Debug Console 规则
 
 所有 Demo 默认应提供一个 `Console` / `Dev` 按钮，作为开发者工具入口。
 
@@ -374,7 +442,7 @@ DESIGN_HUB/13_DEBUG_CONSOLE.md
 
 ---
 
-# 11. 默认开发辅助功能
+# 12. 默认开发辅助功能
 
 所有项目默认应具备一组不属于具体玩法的开发辅助能力。
 
@@ -418,13 +486,14 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 
 ---
 
-# 12. 当前已确认的通用边界摘要
+# 13. 当前已确认的通用边界摘要
 
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
+项目启动：新项目先通过 00_PROJECT_CANVAS.md 完成立项访谈。
 Demo 重点：核心玩法、界面流程、关键反馈、表现方向。
 开发顺序：Web Demo → Unity 源码学习 / 改造 → Unity 独立原型。
-AI 分工：ChatGPT 管方案，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
+AI 分工：ChatGPT 管立项访谈、方案和任务拆解，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
 修改原则：AI 不确定时写入 OPEN_QUESTIONS，不得擅自改核心方向。
 Console 原则：只默认包含通用开发者工具，项目特定调试功能需单独确认。
 默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
