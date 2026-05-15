@@ -70,6 +70,7 @@ Temp 管临时文件。
 
 ```text
 PROJECT_STATUS.md
+AI_RULES/00_FAST_CONTEXT.md
 DESIGN_HUB/00_PROJECT_CANVAS.md
 DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 DESIGN_HUB/18_VERSION_GATE.md
@@ -85,7 +86,7 @@ DESIGN_HUB/19_NOT_NOW.md
 ↓
 ChatGPT 读取 GitHub 模板仓库
 ↓
-ChatGPT 读取 PROJECT_STATUS 与 00_PROJECT_CANVAS
+ChatGPT 读取 PROJECT_STATUS、00_FAST_CONTEXT 与 00_PROJECT_CANVAS
 ↓
 ChatGPT 向用户提问：类型、题材、目标用户、核心玩法、参考产品、最小 Demo 目标
 ↓
@@ -101,9 +102,11 @@ ChatGPT 写入 00_PROJECT_CANVAS.md、17_AUXILIARY_TOOLS_PLAN.md、19_NOT_NOW.md
 ↓
 ChatGPT 提炼 01_PROJECT_BRIEF / 02_CORE_GAMEPLAY / 03_PLAYER_EXPERIENCE / 12_DEMO_SCOPE
 ↓
-ChatGPT 更新 PROJECT_STATUS.md
+ChatGPT 更新 PROJECT_STATUS.md 与 AI_RULES/00_FAST_CONTEXT.md
 ↓
-确认后生成 AI_TASKS/NEXT_CODEX_PROMPT.md
+确认后生成 AI_TASKS/CURRENT_TASK.md
+↓
+由 CURRENT_TASK.md 派生 AI_TASKS/NEXT_CODEX_PROMPT.md
 ↓
 Codex 开始 WEB_DEMO/ 开发
 ```
@@ -114,6 +117,7 @@ Codex 开始 WEB_DEMO/ 开发
 先讨论；
 再确认；
 再写入 GitHub；
+先生成任务卡；
 最后才进入开发。
 ```
 
@@ -121,43 +125,83 @@ Codex 开始 WEB_DEMO/ 开发
 
 # 4. AI 开始工作前必须阅读
 
-每次新会话、上下文重置或开始新任务前，AI 必须按顺序阅读：
+当前模板采用“核心必读 + 按任务类型追加读取”的分层阅读方式。
+
+不要每次无差别读取全部文档。
+
+## 每次任务核心必读
 
 ```text
-1. README.md
-2. PROJECT_STATUS.md
-3. AI_RULES/00_MASTER_PROMPT.md
-4. AI_RULES/01_AI_READ_ORDER.md
-5. AI_RULES/02_AI_EDIT_PERMISSION.md
-6. AI_RULES/07_AI_ROLE_SPLIT.md
-7. AI_RULES/08_OUTPUT_FORMATS.md
-8. AI_RULES/09_CONFIG_FIRST_RULE.md
-9. DESIGN_HUB/00_DESIGN_INDEX.md
-10. DESIGN_HUB/00_PROJECT_CANVAS.md
-11. DESIGN_HUB/01_PROJECT_BRIEF.md
-12. DESIGN_HUB/02_CORE_GAMEPLAY.md
-13. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
-14. DESIGN_HUB/09_DECISIONS.md
-15. DESIGN_HUB/10_OPEN_QUESTIONS.md
-16. DESIGN_HUB/12_DEMO_SCOPE.md
-17. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
-18. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
-19. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
-20. DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
-21. DESIGN_HUB/18_VERSION_GATE.md
-22. DESIGN_HUB/19_NOT_NOW.md
-23. DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md
-24. AI_TASKS/CURRENT_TASK.md
-25. AI_TASKS/NEXT_CODEX_PROMPT.md
-26. AI_TASKS/DEEPSEEK_TASKS.md
-27. AI_TASKS/FEEDBACK_TO_TASK.md
-28. AI_RULES/06_VALIDATION_CHECKLIST.md
+1. PROJECT_STATUS.md
+2. AI_RULES/00_FAST_CONTEXT.md
+3. AI_TASKS/CURRENT_TASK.md
 ```
 
-阅读后，AI 必须先回复：
+## Codex 执行任务时额外必读
 
 ```text
-我已理解当前项目目标、目录结构、设计边界、技术规则和本轮任务约束。
+4. AI_TASKS/NEXT_CODEX_PROMPT.md
+5. AI_RULES/07_AI_ROLE_SPLIT.md
+6. AI_RULES/06_VALIDATION_CHECKLIST.md
+```
+
+然后根据任务类型追加读取对应文件。
+
+## 常见任务追加读取
+
+### 新项目立项
+
+```text
+DESIGN_HUB/00_PROJECT_CANVAS.md
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+DESIGN_HUB/18_VERSION_GATE.md
+DESIGN_HUB/19_NOT_NOW.md
+```
+
+### Web Demo 开发
+
+```text
+AI_RULES/03_TECHNICAL_RULES.md
+AI_RULES/09_CONFIG_FIRST_RULE.md
+DESIGN_HUB/12_DEMO_SCOPE.md
+DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+DESIGN_HUB/18_VERSION_GATE.md
+DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md
+```
+
+### Unity 源码学习 / 改造
+
+```text
+AI_RULES/03_TECHNICAL_RULES.md
+DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+UNITY_SOURCE/SOURCE_CANDIDATES.md
+```
+
+### 试玩反馈转任务
+
+```text
+DESIGN_HUB/11_PLAYTEST_FEEDBACK.md
+AI_TASKS/FEEDBACK_TO_TASK.md
+```
+
+### 辅助工具规划 / 开发
+
+```text
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+AI_RULES/09_CONFIG_FIRST_RULE.md
+```
+
+详细规则见：
+
+```text
+AI_RULES/01_AI_READ_ORDER.md
+```
+
+阅读后，AI 应先回复：
+
+```text
+我已读取快速上下文和当前任务卡，当前任务事实来源为 AI_TASKS/CURRENT_TASK.md。
 ```
 
 如果是新项目立项阶段，AI 应继续说明：
@@ -170,7 +214,55 @@ Codex 开始 WEB_DEMO/ 开发
 
 ---
 
-# 5. 当前推荐主工作流
+# 5. 任务文件职责
+
+## CURRENT_TASK.md
+
+```text
+AI_TASKS/CURRENT_TASK.md 是当前任务的唯一事实来源。
+```
+
+它负责记录：
+
+```text
+任务名称；
+当前阶段；
+当前版本；
+背景；
+本轮只做；
+本轮不做；
+允许修改；
+禁止修改；
+设计约束；
+技术约束；
+验收标准；
+验证方式；
+完成后必须更新的文件。
+```
+
+---
+
+## NEXT_CODEX_PROMPT.md
+
+```text
+AI_TASKS/NEXT_CODEX_PROMPT.md 是从 CURRENT_TASK.md 派生出来的 Codex 执行提示词。
+```
+
+它负责把任务卡转换成 Codex 可直接执行的提示词。
+
+它不应与 `CURRENT_TASK.md` 冲突。
+
+如果两者冲突，优先以：
+
+```text
+AI_TASKS/CURRENT_TASK.md
+```
+
+为准，并更新 `NEXT_CODEX_PROMPT.md`。
+
+---
+
+# 6. 当前推荐主工作流
 
 ```text
 ChatGPT：制作人 / 总策划 / 立项访谈 / 辅助工具规划 / 任务拆解 / 产品复审
@@ -187,7 +279,7 @@ Unity：v1.x 之后用于源码学习、改造和未来独立原型
 
 ---
 
-# 6. 阶段路线
+# 7. 阶段路线
 
 ```text
 v0.x = Web Demo 原型阶段
@@ -217,11 +309,11 @@ DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md
 
 ---
 
-# 7. Codex 任务归属判断规则
+# 8. Codex 任务归属判断规则
 
 Codex 不只是执行者，也是项目主程和任务调度者。
 
-每次 Codex 阅读完 `AI_TASKS/NEXT_CODEX_PROMPT.md` 后，必须先判断本轮任务的执行归属。
+每次 Codex 阅读完 `AI_TASKS/CURRENT_TASK.md` 与 `AI_TASKS/NEXT_CODEX_PROMPT.md` 后，必须先判断本轮任务的执行归属。
 
 Codex 必须在正式开发前输出：
 
@@ -242,7 +334,7 @@ AI_TASKS/DEEPSEEK_TASKS.md
 
 ---
 
-# 8. 配置优先原则
+# 9. 配置优先原则
 
 策划可能频繁调整的内容，不得硬编码。
 
@@ -260,7 +352,7 @@ AI_RULES/09_CONFIG_FIRST_RULE.md
 
 ---
 
-# 9. 试玩反馈转任务
+# 10. 试玩反馈转任务
 
 试玩反馈不应直接变成开发冲动，必须先分类、定级，再生成任务。
 
@@ -272,7 +364,7 @@ AI_TASKS/FEEDBACK_TO_TASK.md
 
 ---
 
-# 10. Unity 源码筛选
+# 11. Unity 源码筛选
 
 进入 Unity 源码学习阶段前，必须先对候选源码评分。
 
@@ -284,12 +376,14 @@ UNITY_SOURCE/SOURCE_CANDIDATES.md
 
 ---
 
-# 11. 当前已确认的通用边界摘要
+# 12. 当前已确认的通用边界摘要
 
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
 项目启动：新项目先通过 00_PROJECT_CANVAS.md 完成立项访谈，并通过 17_AUXILIARY_TOOLS_PLAN.md 分析辅助工具需求。
-状态同步：每轮关键任务后更新 PROJECT_STATUS.md。
+状态同步：每轮关键任务后更新 PROJECT_STATUS.md 与 AI_RULES/00_FAST_CONTEXT.md。
+任务来源：CURRENT_TASK.md 是当前任务唯一事实来源。
+Codex 提示：NEXT_CODEX_PROMPT.md 是从 CURRENT_TASK.md 派生的执行提示词。
 版本推进：按 18_VERSION_GATE.md 控制阶段推进。
 暂不做：按 19_NOT_NOW.md 防止 AI 过度发散。
 配置优先：策划可能频繁调整的内容，不得硬编码。
