@@ -62,10 +62,6 @@ DeepSeek 产物必须由 Codex 审核后才能合并。
 修改前必须说明原因：
 
 ```text
-Assets/
-Data/
-Tools/
-Tests/
 Builds/
 AI_RULES/03_TECHNICAL_RULES.md
 AI_RULES/04_DATA_RULES.md
@@ -76,10 +72,37 @@ AI_RULES/06_VALIDATION_CHECKLIST.md
 说明：
 
 ```text
-根目录 Data/、Tools/、Tests/、Assets/ 通常用于通用资料或后续正式工程。
-Web Demo 阶段应优先使用 WEB_DEMO/ 内部的 Data、Tools、Tests、Assets。
-Unity 源码学习阶段应优先使用 UNITY_SOURCE/。
-Unity 独立原型阶段应优先使用 UNITY_PROJECT/。
+根目录不再默认创建 Data/、Assets/、Tools/、Tests/、Scenes/、Scripts/ 等具体工程目录。
+Web Demo 阶段应使用 WEB_DEMO/ 内部的 Data、Assets、Tools、Tests。
+Unity 源码学习阶段应使用 UNITY_SOURCE/。
+Unity 独立原型阶段应使用 UNITY_PROJECT/。
+Builds/ 只作为构建输出目录，不作为源码目录。
+```
+
+---
+
+## AI 不得擅自创建或使用的根目录
+
+除非任务明确要求并获得人类制作人确认，AI 不得在根目录创建：
+
+```text
+Scenes/
+Scripts/
+Data/
+Assets/
+Tools/
+Tests/
+```
+
+这些目录如果需要，应放在对应阶段工作区内部：
+
+```text
+WEB_DEMO/Data/
+WEB_DEMO/Assets/
+WEB_DEMO/Tools/
+WEB_DEMO/Tests/
+UNITY_SOURCE/...
+UNITY_PROJECT/...
 ```
 
 ---
