@@ -16,23 +16,45 @@
 2. `AI_RULES/00_MASTER_PROMPT.md`
 3. `AI_RULES/03_TECHNICAL_RULES.md`
 4. `AI_RULES/07_AI_ROLE_SPLIT.md`
-5. `DESIGN_HUB/01_PROJECT_BRIEF.md`
-6. `DESIGN_HUB/02_CORE_GAMEPLAY.md`
-7. `DESIGN_HUB/03_PLAYER_EXPERIENCE.md`
-8. `DESIGN_HUB/05_ECONOMY_AND_BALANCE.md`
-9. `DESIGN_HUB/07_ART_AND_AUDIO_DIRECTION.md`
-10. `DESIGN_HUB/08_UX_FLOW.md`
-11. `DESIGN_HUB/09_DECISIONS.md`
-12. `DESIGN_HUB/12_DEMO_SCOPE.md`
-13. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
-14. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
-15. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
-16. `DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md`
-17. `AI_TASKS/CURRENT_TASK.md`
-18. `AI_TASKS/CHANGELOG.md`
-19. `AI_TASKS/DEV_LOG.md`
-20. `AI_TASKS/DEEPSEEK_TASKS.md`
-21. `AI_RULES/06_VALIDATION_CHECKLIST.md`
+5. `DESIGN_HUB/00_PROJECT_CANVAS.md`
+6. `DESIGN_HUB/01_PROJECT_BRIEF.md`
+7. `DESIGN_HUB/02_CORE_GAMEPLAY.md`
+8. `DESIGN_HUB/03_PLAYER_EXPERIENCE.md`
+9. `DESIGN_HUB/05_ECONOMY_AND_BALANCE.md`
+10. `DESIGN_HUB/07_ART_AND_AUDIO_DIRECTION.md`
+11. `DESIGN_HUB/08_UX_FLOW.md`
+12. `DESIGN_HUB/09_DECISIONS.md`
+13. `DESIGN_HUB/12_DEMO_SCOPE.md`
+14. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
+15. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
+16. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
+17. `DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md`
+18. `AI_TASKS/CURRENT_TASK.md`
+19. `AI_TASKS/CHANGELOG.md`
+20. `AI_TASKS/DEV_LOG.md`
+21. `AI_TASKS/DEEPSEEK_TASKS.md`
+22. `AI_RULES/06_VALIDATION_CHECKLIST.md`
+
+---
+
+## 开发前置条件
+
+在正式开发前，必须确认项目已经完成立项访谈，并且以下文件已经从 `DESIGN_HUB/00_PROJECT_CANVAS.md` 中提炼出基本内容：
+
+```text
+DESIGN_HUB/01_PROJECT_BRIEF.md
+DESIGN_HUB/02_CORE_GAMEPLAY.md
+DESIGN_HUB/03_PLAYER_EXPERIENCE.md
+DESIGN_HUB/12_DEMO_SCOPE.md
+```
+
+如果 `00_PROJECT_CANVAS.md` 仍处于“待立项访谈”，或核心玩法、目标用户、最小 Demo 目标尚未明确，Codex 不应开始开发。
+
+此时应提示：
+
+```text
+当前项目尚未完成立项访谈，建议先由 ChatGPT 继续向用户提问并完善 DESIGN_HUB/00_PROJECT_CANVAS.md。
+```
 
 ---
 
@@ -142,7 +164,8 @@ Docs/UnitySourceAnalysis/
 - 不要把 Web Demo 配置、工具、测试散落到根目录 `Data/`、`Tools/`、`Tests/`；
 - 不要默认创建其他引擎工程；
 - 不要在没有明确进入 v2.x 前从 0 创建 Unity 项目；
-- 不要绕过 Unity 源码许可证或授权限制。
+- 不要绕过 Unity 源码许可证或授权限制；
+- 不要在项目尚未完成立项访谈时开始开发。
 
 ---
 
@@ -244,17 +267,18 @@ WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
 
 1. 待填写；
 2. 待填写；
-3. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
-4. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检；
-5. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
-6. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
-7. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
-8. 已完成任务归属判断；
-9. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
-10. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
-11. 已更新 `AI_TASKS/CHANGELOG.md`；
-12. 已更新 `AI_TASKS/DEV_LOG.md`；
-13. 已更新 `AI_TASKS/CURRENT_TASK.md`。
+3. 项目已经完成立项访谈，或本轮明确是“完善立项档案”任务；
+4. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
+5. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检；
+6. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
+7. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
+8. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
+9. 已完成任务归属判断；
+10. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
+11. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
+12. 已更新 `AI_TASKS/CHANGELOG.md`；
+13. 已更新 `AI_TASKS/DEV_LOG.md`；
+14. 已更新 `AI_TASKS/CURRENT_TASK.md`。
 
 ---
 
