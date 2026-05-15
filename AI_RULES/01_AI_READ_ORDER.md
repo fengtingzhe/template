@@ -11,15 +11,48 @@
 2. AI_RULES/00_MASTER_PROMPT.md
 3. AI_RULES/01_AI_READ_ORDER.md
 4. AI_RULES/02_AI_EDIT_PERMISSION.md
-5. DESIGN_HUB/00_DESIGN_INDEX.md
-6. DESIGN_HUB/01_PROJECT_BRIEF.md
-7. DESIGN_HUB/02_CORE_GAMEPLAY.md
-8. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
-9. DESIGN_HUB/09_DECISIONS.md
-10. DESIGN_HUB/10_OPEN_QUESTIONS.md
-11. AI_TASKS/CURRENT_TASK.md
-12. AI_TASKS/NEXT_CODEX_PROMPT.md
-13. AI_RULES/06_VALIDATION_CHECKLIST.md
+5. AI_RULES/07_AI_ROLE_SPLIT.md
+6. DESIGN_HUB/00_DESIGN_INDEX.md
+7. DESIGN_HUB/00_PROJECT_CANVAS.md
+8. DESIGN_HUB/01_PROJECT_BRIEF.md
+9. DESIGN_HUB/02_CORE_GAMEPLAY.md
+10. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
+11. DESIGN_HUB/09_DECISIONS.md
+12. DESIGN_HUB/10_OPEN_QUESTIONS.md
+13. DESIGN_HUB/12_DEMO_SCOPE.md
+14. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+15. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+16. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+17. AI_TASKS/CURRENT_TASK.md
+18. AI_TASKS/NEXT_CODEX_PROMPT.md
+19. AI_TASKS/DEEPSEEK_TASKS.md
+20. AI_RULES/06_VALIDATION_CHECKLIST.md
+```
+
+---
+
+## 新项目立项时的额外要求
+
+如果当前是新项目立项阶段，AI 必须优先读取：
+
+```text
+DESIGN_HUB/00_PROJECT_CANVAS.md
+```
+
+然后根据其中的“ChatGPT 立项访谈问题清单”向用户提问。
+
+在用户确认前，不要直接进入开发，也不要直接生成 Codex 开发任务。
+
+推荐流程：
+
+```text
+先提问；
+用户回答；
+AI 总结立项档案草案；
+用户确认；
+写入 GitHub；
+提炼正式设计文档；
+再生成 NEXT_CODEX_PROMPT。
 ```
 
 ---
@@ -42,7 +75,13 @@ Codex 执行任务时，必须读取该文件。
 我已理解当前项目目标、目录结构、设计边界、技术规则和本轮任务约束。
 ```
 
-然后才能开始修改文件。
+如果是新项目立项阶段，AI 应继续说明：
+
+```text
+我将先进行立项访谈，暂不进入开发。
+```
+
+然后开始向用户提问。
 
 ---
 
@@ -50,6 +89,8 @@ Codex 执行任务时，必须读取该文件。
 
 - 不阅读规则就直接改代码；
 - 只看当前任务，不看设计边界；
+- 忽略 `DESIGN_HUB/00_PROJECT_CANVAS.md`；
 - 忽略 `DESIGN_HUB/09_DECISIONS.md`；
 - 忽略 `AI_TASKS/NEXT_CODEX_PROMPT.md`；
+- 新项目未完成立项访谈就直接开发；
 - 遇到不明确问题时擅自决定。
