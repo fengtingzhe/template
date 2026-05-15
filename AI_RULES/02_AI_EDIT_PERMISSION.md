@@ -10,16 +10,15 @@
 
 ```text
 WEB_DEMO/
-Scripts/
-Data/
+UNITY_SOURCE/
+UNITY_PROJECT/
 AI_TASKS/CHANGELOG.md
 AI_TASKS/DEV_LOG.md
 AI_TASKS/REVIEW_LOG.md
 AI_TASKS/CURRENT_TASK.md
 AI_TASKS/NEXT_CODEX_PROMPT.md
 AI_TASKS/DEEPSEEK_TASKS.md
-Tests/
-Tools/
+Docs/
 Temp/
 ```
 
@@ -63,13 +62,24 @@ DeepSeek 产物必须由 Codex 审核后才能合并。
 修改前必须说明原因：
 
 ```text
-Scenes/
 Assets/
-Docs/
+Data/
+Tools/
+Tests/
+Builds/
 AI_RULES/03_TECHNICAL_RULES.md
 AI_RULES/04_DATA_RULES.md
 AI_RULES/05_ASSET_RULES.md
 AI_RULES/06_VALIDATION_CHECKLIST.md
+```
+
+说明：
+
+```text
+根目录 Data/、Tools/、Tests/、Assets/ 通常用于通用资料或后续正式工程。
+Web Demo 阶段应优先使用 WEB_DEMO/ 内部的 Data、Tools、Tests、Assets。
+Unity 源码学习阶段应优先使用 UNITY_SOURCE/。
+Unity 独立原型阶段应优先使用 UNITY_PROJECT/。
 ```
 
 ---
@@ -85,22 +95,8 @@ AI_RULES/00_MASTER_PROMPT.md
 AI_RULES/01_AI_READ_ORDER.md
 AI_RULES/02_AI_EDIT_PERMISSION.md
 AI_RULES/07_AI_ROLE_SPLIT.md
-project.godot
-核心主场景
-核心 Autoload 配置
-```
-
----
-
-## Godot 特别提醒
-
-AI 修改 `.tscn` 文件前必须说明：
-
-```text
-为什么要修改；
-修改哪些节点；
-是否会影响已有引用；
-如何验证场景仍然可以打开。
+核心技术路线
+已确认决策
 ```
 
 ---
@@ -147,3 +143,57 @@ Builds/web-demo/
 ```
 
 `Builds/` 应优先作为构建输出目录，而不是 Web Demo 源码目录。
+
+---
+
+## Unity 源码学习特别提醒
+
+Unity 源码学习 / 改造阶段默认版本号为 `v1.x`。
+
+默认工作区：
+
+```text
+UNITY_SOURCE/
+```
+
+原则：
+
+```text
+先跑通，再解释，再小步改造。
+```
+
+未经明确允许，不要从 0 创建 Unity 项目。
+
+未经明确允许，不要把 Unity 源码项目散落到根目录。
+
+Unity 源码项目必须先检查：
+
+```text
+Unity 版本；
+许可证；
+依赖插件；
+运行说明；
+是否缺失资源；
+是否需要联网或后端。
+```
+
+---
+
+## Unity 独立原型特别提醒
+
+Unity 独立原型阶段默认版本号为 `v2.x`。
+
+默认工作区：
+
+```text
+UNITY_PROJECT/
+```
+
+进入该阶段前，必须确认：
+
+```text
+Web Demo 核心玩法已验证；
+Unity 源码学习阶段已跑通至少一个参考项目；
+策划确认需要创建自己的 Unity 原型；
+任务中明确允许进入 v2.x。
+```
