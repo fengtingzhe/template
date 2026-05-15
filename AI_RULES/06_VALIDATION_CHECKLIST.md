@@ -36,9 +36,10 @@
 
 ## 数据检查
 
-- [ ] 数值来自对应 Demo 工作区内的配置文件；
+- [ ] 数值来自对应阶段工作区内的配置文件；
 - [ ] Web Demo 数值优先来自 `WEB_DEMO/Data/config/`；
-- [ ] Godot Demo 数值优先来自根目录 `Data/` 或 Godot 专用配置；
+- [ ] Unity 源码学习阶段的配置和记录优先来自 `UNITY_SOURCE/`；
+- [ ] Unity 独立原型阶段的配置和记录优先来自 `UNITY_PROJECT/`；
 - [ ] 没有大量硬编码；
 - [ ] 修改配置后功能能生效；
 - [ ] 字段含义清楚。
@@ -74,6 +75,30 @@ DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 - [ ] Web Demo 测试脚本位于 `WEB_DEMO/Tests/`；
 - [ ] 没有把 Web Demo 源码写入 `Builds/`；
 - [ ] 没有把 Web Demo 配置、工具和测试散落到根目录 `Data/`、`Tools/`、`Tests/`。
+
+---
+
+## Unity 源码学习 / 改造检查
+
+如果本轮涉及 Unity 源码学习 / 改造，必须参考：
+
+```text
+DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+```
+
+默认检查：
+
+- [ ] Unity 源码项目位于 `UNITY_SOURCE/`；
+- [ ] 已记录 Unity 版本；
+- [ ] 已检查许可证；
+- [ ] 已检查依赖插件；
+- [ ] 已检查是否缺失资源；
+- [ ] 已检查是否依赖后端或联网服务；
+- [ ] 已记录首次运行报错，如有；
+- [ ] 兼容性修复已记录到 `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如适用；
+- [ ] 源码结构分析已记录到 `UNITY_SOURCE/STRUCTURE_NOTES.md` 或 `Docs/UnitySourceAnalysis/`，如适用；
+- [ ] 未在源码未跑通前进行大规模改造；
+- [ ] 未绕过许可证或授权限制。
 
 ---
 
