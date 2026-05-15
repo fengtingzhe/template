@@ -13,28 +13,36 @@
 请先阅读：
 
 1. `README.md`
-2. `AI_RULES/00_MASTER_PROMPT.md`
-3. `AI_RULES/03_TECHNICAL_RULES.md`
-4. `AI_RULES/07_AI_ROLE_SPLIT.md`
-5. `DESIGN_HUB/00_PROJECT_CANVAS.md`
-6. `DESIGN_HUB/01_PROJECT_BRIEF.md`
-7. `DESIGN_HUB/02_CORE_GAMEPLAY.md`
-8. `DESIGN_HUB/03_PLAYER_EXPERIENCE.md`
-9. `DESIGN_HUB/05_ECONOMY_AND_BALANCE.md`
-10. `DESIGN_HUB/07_ART_AND_AUDIO_DIRECTION.md`
-11. `DESIGN_HUB/08_UX_FLOW.md`
-12. `DESIGN_HUB/09_DECISIONS.md`
-13. `DESIGN_HUB/12_DEMO_SCOPE.md`
-14. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
-15. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
-16. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
-17. `DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md`
-18. `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`
-19. `AI_TASKS/CURRENT_TASK.md`
-20. `AI_TASKS/CHANGELOG.md`
-21. `AI_TASKS/DEV_LOG.md`
-22. `AI_TASKS/DEEPSEEK_TASKS.md`
-23. `AI_RULES/06_VALIDATION_CHECKLIST.md`
+2. `PROJECT_STATUS.md`
+3. `AI_RULES/00_MASTER_PROMPT.md`
+4. `AI_RULES/03_TECHNICAL_RULES.md`
+5. `AI_RULES/07_AI_ROLE_SPLIT.md`
+6. `AI_RULES/08_OUTPUT_FORMATS.md`
+7. `AI_RULES/09_CONFIG_FIRST_RULE.md`
+8. `DESIGN_HUB/00_PROJECT_CANVAS.md`
+9. `DESIGN_HUB/01_PROJECT_BRIEF.md`
+10. `DESIGN_HUB/02_CORE_GAMEPLAY.md`
+11. `DESIGN_HUB/03_PLAYER_EXPERIENCE.md`
+12. `DESIGN_HUB/05_ECONOMY_AND_BALANCE.md`
+13. `DESIGN_HUB/07_ART_AND_AUDIO_DIRECTION.md`
+14. `DESIGN_HUB/08_UX_FLOW.md`
+15. `DESIGN_HUB/09_DECISIONS.md`
+16. `DESIGN_HUB/10_OPEN_QUESTIONS.md`
+17. `DESIGN_HUB/12_DEMO_SCOPE.md`
+18. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
+19. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
+20. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
+21. `DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md`
+22. `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`
+23. `DESIGN_HUB/18_VERSION_GATE.md`
+24. `DESIGN_HUB/19_NOT_NOW.md`
+25. `DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md`
+26. `AI_TASKS/CURRENT_TASK.md`
+27. `AI_TASKS/CHANGELOG.md`
+28. `AI_TASKS/DEV_LOG.md`
+29. `AI_TASKS/DEEPSEEK_TASKS.md`
+30. `AI_TASKS/FEEDBACK_TO_TASK.md`
+31. `AI_RULES/06_VALIDATION_CHECKLIST.md`
 
 ---
 
@@ -49,21 +57,18 @@ DESIGN_HUB/03_PLAYER_EXPERIENCE.md
 DESIGN_HUB/12_DEMO_SCOPE.md
 ```
 
-还必须确认项目已经进行辅助工具需求分析，并初步填写：
+还必须确认：
 
 ```text
-DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+PROJECT_STATUS.md 已更新；
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md 已完成辅助工具需求初判；
+DESIGN_HUB/18_VERSION_GATE.md 中的当前版本进入条件已满足；
+DESIGN_HUB/19_NOT_NOW.md 中没有被本轮任务违反的暂不做项；
+AI_RULES/09_CONFIG_FIRST_RULE.md 中的配置优先规则已纳入实现约束；
+DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md 中的展示标准已纳入验收。
 ```
 
-如果 `00_PROJECT_CANVAS.md` 仍处于“待立项访谈”，或核心玩法、目标用户、最小 Demo 目标尚未明确，Codex 不应开始开发。
-
-如果 `17_AUXILIARY_TOOLS_PLAN.md` 仍未判断本项目是否需要关卡编辑器、数值工具、配置工具、批量生成工具、自动测试或模拟工具，Codex 不应直接开始开发游戏本体。
-
-此时应提示：
-
-```text
-当前项目尚未完成立项访谈或辅助工具需求分析，建议先由 ChatGPT 继续向用户提问并完善 DESIGN_HUB/00_PROJECT_CANVAS.md 与 DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md。
-```
+如果项目尚未完成立项访谈、辅助工具需求分析或版本进入条件不清楚，Codex 不应开始开发游戏本体。
 
 ---
 
@@ -80,14 +85,6 @@ DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 - Codex 负责：
 - DeepSeek 负责：
 - Codex 审核方式：
-```
-
-判断原则：
-
-```text
-核心架构、跨文件整合、状态管理、复杂 Bug 修复、最终合并：优先 Codex；
-普通 UI 组件、重复性代码、配置表、文案、简单工具函数：可以拆给 DeepSeek；
-DeepSeek 产物必须由 Codex 审核后才能合并。
 ```
 
 如本轮需要 DeepSeek 执行子任务，必须在：
@@ -145,6 +142,7 @@ AI_TASKS/DEEPSEEK_TASKS.md
 ```text
 WEB_DEMO/
 AI_TASKS/
+PROJECT_STATUS.md
 DESIGN_HUB/11_PLAYTEST_FEEDBACK.md
 DESIGN_HUB/12_DEMO_SCOPE.md
 DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
@@ -162,6 +160,7 @@ AI_TASKS/
 
 ```text
 UNITY_SOURCE/
+UNITY_SOURCE/SOURCE_CANDIDATES.md
 AI_TASKS/
 Docs/UnitySourceAnalysis/
 ```
@@ -174,10 +173,12 @@ Docs/UnitySourceAnalysis/
 
 - 不要擅自修改 `DESIGN_HUB/09_DECISIONS.md`；
 - 不要擅自修改 `AI_RULES/`；
+- 不要违反 `DESIGN_HUB/19_NOT_NOW.md`；
 - 不要新增与本轮目标无关的大型系统；
 - 不要把 Demo 宣称为最终游戏；
 - 不要引入复杂依赖，除非任务明确允许；
 - 不要擅自改变核心玩法方向；
+- 不要把策划可能频繁调整的内容硬编码；
 - 不要把 Web Demo 源码写入 `Builds/`；
 - 不要把 Web Demo 配置、工具、测试散落到根目录 `Data/`、`Tools/`、`Tests/`；
 - 不要默认创建其他引擎工程；
@@ -195,6 +196,9 @@ Docs/UnitySourceAnalysis/
 
 ```text
 DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+DESIGN_HUB/18_VERSION_GATE.md
+DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md
+AI_RULES/09_CONFIG_FIRST_RULE.md
 ```
 
 默认路径：
@@ -214,6 +218,20 @@ WEB_DEMO/
 ├── Docs/
 └── Temp/
 ```
+
+---
+
+## 配置优先要求
+
+如果本轮涉及数值、关卡、目标、奖励、难度、UI 文案或策划可能频繁调整的内容，默认应配置化。
+
+配置优先路径：
+
+```text
+WEB_DEMO/Data/config/
+```
+
+除 v0.1 最小验证外，不应把关键数值硬编码在逻辑代码中。
 
 ---
 
@@ -247,11 +265,13 @@ DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 
 ```text
 DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+UNITY_SOURCE/SOURCE_CANDIDATES.md
 ```
 
 默认要求：
 
 ```text
+先做候选源码评分；
 Unity 源码项目放在 UNITY_SOURCE/；
 先做源码体检，再做改造；
 检查 Unity 版本、许可证、依赖插件、缺失资源、后端依赖；
@@ -264,44 +284,15 @@ Unity 源码项目放在 UNITY_SOURCE/；
 
 ---
 
-## 默认开发辅助功能要求
+## 试玩反馈转任务要求
 
-如果本轮涉及 Web Demo，默认应参考：
-
-```text
-DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
-```
-
-默认要求：
+如果本轮任务来自试玩反馈，必须先参考：
 
 ```text
-提供 WEB_DEMO/run_web_demo.bat，或明确说明本轮暂不需要；
-WEB_DEMO/run_web_demo.bat 用于启动 Vite 或等价本地 Web 服务；
-WEB_DEMO/run_web_demo.bat 启动后应自动打开 Demo 网页；
-WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
-不要要求用户直接双击 WEB_DEMO/index.html 运行 Demo；
-如本轮包含测试，应提供或更新 WEB_DEMO/Tests/ 下的 Smoke Test。
+AI_TASKS/FEEDBACK_TO_TASK.md
 ```
 
----
-
-## 通用 Console 要求
-
-如果本轮涉及可运行 Demo 界面，默认应包含 `Console` / `Dev` 按钮。
-
-通用功能只包括：
-
-```text
-音乐开关；
-音效开关；
-暂停 / 继续；
-重置场景 / 重置 Demo；
-显示 FPS。
-```
-
-当开启 FPS 显示后，FPS 数值应显示在游戏画面的右下角。
-
-不要默认加入项目特定调试功能，例如加资源、跳转时间、生成敌人、解锁节点等。若需要，必须在任务目标中明确写出。
+先做反馈分类、优先级判断，再生成开发任务。
 
 ---
 
@@ -311,33 +302,36 @@ WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
 
 1. 待填写；
 2. 待填写；
-3. 项目已经完成立项访谈，或本轮明确是“完善立项档案”任务；
-4. 项目已经完成辅助工具需求分析，或本轮明确是“完善辅助工具规划”任务；
-5. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
-6. 如涉及辅助工具，文件优先位于 `WEB_DEMO/Tools/` 或对应阶段工作区；
-7. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检；
-8. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
-9. 辅助工具规划符合 `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`；
-10. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
-11. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
-12. 已完成任务归属判断；
-13. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
-14. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
-15. 已更新 `AI_TASKS/CHANGELOG.md`；
-16. 已更新 `AI_TASKS/DEV_LOG.md`；
-17. 已更新 `AI_TASKS/CURRENT_TASK.md`。
+3. `PROJECT_STATUS.md` 已更新；
+4. 项目已经完成立项访谈，或本轮明确是“完善立项档案”任务；
+5. 项目已经完成辅助工具需求分析，或本轮明确是“完善辅助工具规划”任务；
+6. 本轮任务不违反 `DESIGN_HUB/19_NOT_NOW.md`；
+7. 本轮版本推进符合 `DESIGN_HUB/18_VERSION_GATE.md`；
+8. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
+9. 如涉及 Web Demo，展示标准符合 `DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md`；
+10. 如涉及配置，符合 `AI_RULES/09_CONFIG_FIRST_RULE.md`；
+11. 如涉及辅助工具，文件优先位于 `WEB_DEMO/Tools/` 或对应阶段工作区；
+12. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检或候选评分；
+13. 已完成任务归属判断；
+14. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
+15. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
+16. 已更新 `AI_TASKS/CHANGELOG.md`；
+17. 已更新 `AI_TASKS/DEV_LOG.md`；
+18. 已更新 `AI_TASKS/CURRENT_TASK.md`。
 
 ---
 
 ## 完成后请更新
 
-1. `AI_TASKS/CHANGELOG.md`
-2. `AI_TASKS/DEV_LOG.md`
-3. `AI_TASKS/CURRENT_TASK.md`
-4. `AI_TASKS/DEEPSEEK_TASKS.md`，如涉及任务拆分
-5. `AI_TASKS/REVIEW_LOG.md`，如涉及 DeepSeek 产物审核
-6. `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`，如涉及辅助工具新增、调整或延期
-7. `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如涉及 Unity 兼容性修复
-8. `UNITY_SOURCE/STRUCTURE_NOTES.md`，如涉及 Unity 源码结构学习
+1. `PROJECT_STATUS.md`
+2. `AI_TASKS/CHANGELOG.md`
+3. `AI_TASKS/DEV_LOG.md`
+4. `AI_TASKS/CURRENT_TASK.md`
+5. `AI_TASKS/DEEPSEEK_TASKS.md`，如涉及任务拆分
+6. `AI_TASKS/REVIEW_LOG.md`，如涉及 DeepSeek 产物审核
+7. `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`，如涉及辅助工具新增、调整或延期
+8. `UNITY_SOURCE/SOURCE_CANDIDATES.md`，如涉及 Unity 源码候选筛选
+9. `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如涉及 Unity 兼容性修复
+10. `UNITY_SOURCE/STRUCTURE_NOTES.md`，如涉及 Unity 源码结构学习
 
 必要时，将下一轮建议写入本文件。
