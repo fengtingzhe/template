@@ -14,23 +14,25 @@
 
 1. `README.md`
 2. `AI_RULES/00_MASTER_PROMPT.md`
-3. `AI_RULES/07_AI_ROLE_SPLIT.md`
-4. `DESIGN_HUB/01_PROJECT_BRIEF.md`
-5. `DESIGN_HUB/02_CORE_GAMEPLAY.md`
-6. `DESIGN_HUB/03_PLAYER_EXPERIENCE.md`
-7. `DESIGN_HUB/05_ECONOMY_AND_BALANCE.md`
-8. `DESIGN_HUB/07_ART_AND_AUDIO_DIRECTION.md`
-9. `DESIGN_HUB/08_UX_FLOW.md`
-10. `DESIGN_HUB/09_DECISIONS.md`
-11. `DESIGN_HUB/12_DEMO_SCOPE.md`
-12. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
-13. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
-14. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
-15. `AI_TASKS/CURRENT_TASK.md`
-16. `AI_TASKS/CHANGELOG.md`
-17. `AI_TASKS/DEV_LOG.md`
-18. `AI_TASKS/DEEPSEEK_TASKS.md`
-19. `AI_RULES/06_VALIDATION_CHECKLIST.md`
+3. `AI_RULES/03_TECHNICAL_RULES.md`
+4. `AI_RULES/07_AI_ROLE_SPLIT.md`
+5. `DESIGN_HUB/01_PROJECT_BRIEF.md`
+6. `DESIGN_HUB/02_CORE_GAMEPLAY.md`
+7. `DESIGN_HUB/03_PLAYER_EXPERIENCE.md`
+8. `DESIGN_HUB/05_ECONOMY_AND_BALANCE.md`
+9. `DESIGN_HUB/07_ART_AND_AUDIO_DIRECTION.md`
+10. `DESIGN_HUB/08_UX_FLOW.md`
+11. `DESIGN_HUB/09_DECISIONS.md`
+12. `DESIGN_HUB/12_DEMO_SCOPE.md`
+13. `DESIGN_HUB/13_DEBUG_CONSOLE.md`
+14. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
+15. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
+16. `DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md`
+17. `AI_TASKS/CURRENT_TASK.md`
+18. `AI_TASKS/CHANGELOG.md`
+19. `AI_TASKS/DEV_LOG.md`
+20. `AI_TASKS/DEEPSEEK_TASKS.md`
+21. `AI_RULES/06_VALIDATION_CHECKLIST.md`
 
 ---
 
@@ -91,6 +93,16 @@ AI_TASKS/DEEPSEEK_TASKS.md
 
 ---
 
+## 当前项目阶段
+
+- [ ] v0.x / Web Demo 原型
+- [ ] v1.x / Unity 源码学习 / 改造
+- [ ] v2.x / Unity 独立原型
+- [ ] v3.x / 可展示垂直切片
+- [ ] v4.x / 商业化验证
+
+---
+
 ## 允许修改文件
 
 ```text
@@ -104,6 +116,14 @@ WEB_DEMO/
 AI_TASKS/
 DESIGN_HUB/11_PLAYTEST_FEEDBACK.md
 DESIGN_HUB/12_DEMO_SCOPE.md
+```
+
+如果本轮涉及 Unity 源码学习 / 改造，默认应优先使用：
+
+```text
+UNITY_SOURCE/
+AI_TASKS/
+Docs/UnitySourceAnalysis/
 ```
 
 ---
@@ -120,7 +140,9 @@ DESIGN_HUB/12_DEMO_SCOPE.md
 - 不要擅自改变核心玩法方向；
 - 不要把 Web Demo 源码写入 `Builds/`；
 - 不要把 Web Demo 配置、工具、测试散落到根目录 `Data/`、`Tools/`、`Tests/`；
-- 不要在 Web Demo 阶段修改 Godot 工程文件，除非任务明确允许。
+- 不要默认创建其他引擎工程；
+- 不要在没有明确进入 v2.x 前从 0 创建 Unity 项目；
+- 不要绕过 Unity 源码许可证或授权限制。
 
 ---
 
@@ -148,6 +170,29 @@ WEB_DEMO/
 ├── Tests/
 ├── Docs/
 └── Temp/
+```
+
+---
+
+## Unity 源码学习 / 改造要求
+
+如果本轮涉及 Unity 源码学习 / 改造，默认应参考：
+
+```text
+DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+```
+
+默认要求：
+
+```text
+Unity 源码项目放在 UNITY_SOURCE/；
+先做源码体检，再做改造；
+检查 Unity 版本、许可证、依赖插件、缺失资源、后端依赖；
+首次运行报错必须记录；
+兼容性修复记录到 UNITY_SOURCE/COMPATIBILITY_LOG.md；
+源码结构分析记录到 UNITY_SOURCE/STRUCTURE_NOTES.md 或 Docs/UnitySourceAnalysis/；
+源码未跑通前不做大规模改造；
+不绕过许可证或授权限制。
 ```
 
 ---
@@ -200,15 +245,16 @@ WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
 1. 待填写；
 2. 待填写；
 3. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
-4. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
-5. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
-6. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
-7. 已完成任务归属判断；
-8. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
-9. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
-10. 已更新 `AI_TASKS/CHANGELOG.md`；
-11. 已更新 `AI_TASKS/DEV_LOG.md`；
-12. 已更新 `AI_TASKS/CURRENT_TASK.md`。
+4. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检；
+5. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
+6. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
+7. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
+8. 已完成任务归属判断；
+9. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
+10. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
+11. 已更新 `AI_TASKS/CHANGELOG.md`；
+12. 已更新 `AI_TASKS/DEV_LOG.md`；
+13. 已更新 `AI_TASKS/CURRENT_TASK.md`。
 
 ---
 
@@ -219,5 +265,7 @@ WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
 3. `AI_TASKS/CURRENT_TASK.md`
 4. `AI_TASKS/DEEPSEEK_TASKS.md`，如涉及任务拆分
 5. `AI_TASKS/REVIEW_LOG.md`，如涉及 DeepSeek 产物审核
+6. `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如涉及 Unity 兼容性修复
+7. `UNITY_SOURCE/STRUCTURE_NOTES.md`，如涉及 Unity 源码结构学习
 
 必要时，将下一轮建议写入本文件。
