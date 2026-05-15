@@ -58,10 +58,6 @@ ProjectName/
 ├── UNITY_SOURCE/
 ├── UNITY_PROJECT/
 ├── Docs/
-├── Data/
-├── Assets/
-├── Tools/
-├── Tests/
 ├── Builds/
 └── Temp/
 ```
@@ -72,13 +68,15 @@ ProjectName/
 DESIGN_HUB 管方向；
 AI_RULES 管 AI；
 AI_TASKS 管执行；
-WEB_DEMO 管 Web 原型；
-UNITY_SOURCE 管 Unity 源码学习 / 改造；
-UNITY_PROJECT 管未来自建 Unity 原型；
-Docs 管资料；
-Data 管通用数据资料；
-Builds 管构建输出。
+WEB_DEMO 管 Web 原型及其 Data / Assets / Tools / Tests；
+UNITY_SOURCE 管 Unity 源码学习 / 改造及其项目内部文件；
+UNITY_PROJECT 管未来自建 Unity 原型及其项目内部文件；
+Docs 管跨阶段资料和分析文档；
+Builds 管构建输出；
+Temp 管临时文件。
 ```
+
+根目录不再默认创建 `Scenes/`、`Scripts/`、`Data/`、`Assets/`、`Tools/`、`Tests/` 等具体工程目录。对应文件应放在当前阶段的工作区内部。
 
 ---
 
@@ -432,4 +430,5 @@ Console 原则：只默认包含通用开发者工具，项目特定调试功能
 默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
 Web Demo 路径原则：Web Demo 使用 WEB_DEMO/ 独立工作区。
 Unity 路线原则：先做源码学习 / 改造，不默认从 0 创建 Unity 项目。
+根目录瘦身原则：不要在根目录默认创建具体工程目录，具体文件应放入 WEB_DEMO/、UNITY_SOURCE/ 或 UNITY_PROJECT/ 内部。
 ```
