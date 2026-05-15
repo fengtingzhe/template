@@ -24,26 +24,6 @@ Demo 阶段的重点不是完整，而是充分展示。
 
 > 一款【目标平台】上的【游戏类型】Demo，玩家通过【核心操作】完成【核心目标】，用于验证【核心玩法 / 界面流程 / 表现方向 / 数值雏形】是否成立。
 
-## 当前开发目标
-
-当前阶段目标是完成第一版可运行 Demo，验证：
-
-- 核心玩法闭环；
-- 基础 UI 流程；
-- 基础数值配置；
-- 关键反馈表现；
-- 可运行、可试玩、可展示版本。
-
-## 当前版本不追求
-
-- 最终美术品质；
-- 完整商业化；
-- 完整后端；
-- 完整关卡数量；
-- 完整上线品质；
-- 复杂 SDK 接入；
-- 完整长期工程架构。
-
 ---
 
 # 2. 项目目录结构
@@ -51,6 +31,7 @@ Demo 阶段的重点不是完整，而是充分展示。
 ```text
 ProjectName/
 ├── README.md
+├── PROJECT_STATUS.md
 ├── DESIGN_HUB/
 ├── AI_RULES/
 ├── AI_TASKS/
@@ -65,6 +46,7 @@ ProjectName/
 核心原则：
 
 ```text
+PROJECT_STATUS 是当前状态仪表盘；
 DESIGN_HUB 管方向；
 AI_RULES 管 AI；
 AI_TASKS 管执行；
@@ -87,8 +69,11 @@ Temp 管临时文件。
 新对话启动后，ChatGPT 应先读取 GitHub 仓库中的模板文件，尤其是：
 
 ```text
+PROJECT_STATUS.md
 DESIGN_HUB/00_PROJECT_CANVAS.md
 DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+DESIGN_HUB/18_VERSION_GATE.md
+DESIGN_HUB/19_NOT_NOW.md
 ```
 
 然后先进行立项访谈，不直接进入开发。
@@ -100,7 +85,7 @@ DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 ↓
 ChatGPT 读取 GitHub 模板仓库
 ↓
-ChatGPT 读取 DESIGN_HUB/00_PROJECT_CANVAS.md
+ChatGPT 读取 PROJECT_STATUS 与 00_PROJECT_CANVAS
 ↓
 ChatGPT 向用户提问：类型、题材、目标用户、核心玩法、参考产品、最小 Demo 目标
 ↓
@@ -108,13 +93,15 @@ ChatGPT 同时分析：这个项目需要哪些辅助工具，才能让策划高
 ↓
 用户回答
 ↓
-ChatGPT 整理立项档案草案和辅助工具规划草案
+ChatGPT 整理立项档案草案、辅助工具规划草案、暂不做清单
 ↓
 用户确认
 ↓
-ChatGPT 写入 00_PROJECT_CANVAS.md 和 17_AUXILIARY_TOOLS_PLAN.md
+ChatGPT 写入 00_PROJECT_CANVAS.md、17_AUXILIARY_TOOLS_PLAN.md、19_NOT_NOW.md
 ↓
 ChatGPT 提炼 01_PROJECT_BRIEF / 02_CORE_GAMEPLAY / 03_PLAYER_EXPERIENCE / 12_DEMO_SCOPE
+↓
+ChatGPT 更新 PROJECT_STATUS.md
 ↓
 确认后生成 AI_TASKS/NEXT_CODEX_PROMPT.md
 ↓
@@ -130,22 +117,6 @@ Codex 开始 WEB_DEMO/ 开发
 最后才进入开发。
 ```
 
-`00_PROJECT_CANVAS.md` 是项目立项档案、想法池和持续 idea 记录区。
-
-`17_AUXILIARY_TOOLS_PLAN.md` 是项目辅助工具规划文件，用于记录关卡编辑器、数值模拟器、配置工具、内容批量生成工具、自动测试工具、难度评估工具等。
-
-后续有新的想法时，应优先追加到：
-
-```text
-DESIGN_HUB/00_PROJECT_CANVAS.md
-```
-
-如果新想法涉及工具、编辑器、模拟器、批量配置或自动测试，应同步评估是否写入：
-
-```text
-DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
-```
-
 ---
 
 # 4. AI 开始工作前必须阅读
@@ -154,26 +125,33 @@ DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 
 ```text
 1. README.md
-2. AI_RULES/00_MASTER_PROMPT.md
-3. AI_RULES/01_AI_READ_ORDER.md
-4. AI_RULES/02_AI_EDIT_PERMISSION.md
-5. AI_RULES/07_AI_ROLE_SPLIT.md
-6. DESIGN_HUB/00_DESIGN_INDEX.md
-7. DESIGN_HUB/00_PROJECT_CANVAS.md
-8. DESIGN_HUB/01_PROJECT_BRIEF.md
-9. DESIGN_HUB/02_CORE_GAMEPLAY.md
-10. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
-11. DESIGN_HUB/09_DECISIONS.md
-12. DESIGN_HUB/10_OPEN_QUESTIONS.md
-13. DESIGN_HUB/12_DEMO_SCOPE.md
-14. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
-15. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
-16. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
-17. DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
-18. AI_TASKS/CURRENT_TASK.md
-19. AI_TASKS/NEXT_CODEX_PROMPT.md
-20. AI_TASKS/DEEPSEEK_TASKS.md
-21. AI_RULES/06_VALIDATION_CHECKLIST.md
+2. PROJECT_STATUS.md
+3. AI_RULES/00_MASTER_PROMPT.md
+4. AI_RULES/01_AI_READ_ORDER.md
+5. AI_RULES/02_AI_EDIT_PERMISSION.md
+6. AI_RULES/07_AI_ROLE_SPLIT.md
+7. AI_RULES/08_OUTPUT_FORMATS.md
+8. AI_RULES/09_CONFIG_FIRST_RULE.md
+9. DESIGN_HUB/00_DESIGN_INDEX.md
+10. DESIGN_HUB/00_PROJECT_CANVAS.md
+11. DESIGN_HUB/01_PROJECT_BRIEF.md
+12. DESIGN_HUB/02_CORE_GAMEPLAY.md
+13. DESIGN_HUB/03_PLAYER_EXPERIENCE.md
+14. DESIGN_HUB/09_DECISIONS.md
+15. DESIGN_HUB/10_OPEN_QUESTIONS.md
+16. DESIGN_HUB/12_DEMO_SCOPE.md
+17. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
+18. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
+19. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+20. DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+21. DESIGN_HUB/18_VERSION_GATE.md
+22. DESIGN_HUB/19_NOT_NOW.md
+23. DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md
+24. AI_TASKS/CURRENT_TASK.md
+25. AI_TASKS/NEXT_CODEX_PROMPT.md
+26. AI_TASKS/DEEPSEEK_TASKS.md
+27. AI_TASKS/FEEDBACK_TO_TASK.md
+28. AI_RULES/06_VALIDATION_CHECKLIST.md
 ```
 
 阅读后，AI 必须先回复：
@@ -192,46 +170,7 @@ DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 
 ---
 
-# 5. AI 工作基本原则
-
-AI 可以：
-
-```text
-执行任务；
-整理文档；
-实现功能；
-修复 Bug；
-提出建议；
-生成配置；
-生成测试；
-总结问题。
-```
-
-AI 不可以：
-
-```text
-擅自改变核心玩法；
-擅自改变核心系统；
-擅自改变核心数值方向；
-擅自改变核心技术架构；
-擅自重构项目目录结构；
-擅自删除已确认设计；
-擅自替换已经确认的方案；
-新项目未完成立项访谈就直接进入开发；
-新项目未进行辅助工具需求分析就直接进入开发。
-```
-
-如果 AI 不确定，应写入：
-
-```text
-DESIGN_HUB/10_OPEN_QUESTIONS.md
-```
-
-等待人类制作人决策。
-
----
-
-# 6. 当前推荐主工作流
+# 5. 当前推荐主工作流
 
 ```text
 ChatGPT：制作人 / 总策划 / 立项访谈 / 辅助工具规划 / 任务拆解 / 产品复审
@@ -244,6 +183,36 @@ Excel / Python：数值与数据分析
 Notion：工作流、文档、知识库、任务沉淀
 GitHub：代码版本管理
 Unity：v1.x 之后用于源码学习、改造和未来独立原型
+```
+
+---
+
+# 6. 阶段路线
+
+```text
+v0.x = Web Demo 原型阶段
+v1.x = Unity 源码学习 / 改造阶段
+v2.x = Unity 独立原型阶段
+v3.x = 可展示垂直切片阶段
+v4.x = 商业化验证阶段
+```
+
+版本推进条件见：
+
+```text
+DESIGN_HUB/18_VERSION_GATE.md
+```
+
+当前阶段暂不做清单见：
+
+```text
+DESIGN_HUB/19_NOT_NOW.md
+```
+
+Demo 展示标准见：
+
+```text
+DESIGN_HUB/20_DEMO_PRESENTATION_STANDARD.md
 ```
 
 ---
@@ -265,14 +234,6 @@ Codex 必须在正式开发前输出：
 - Codex 审核方式：
 ```
 
-判断原则：
-
-```text
-核心架构、跨文件整合、状态管理、复杂 Bug 修复、最终合并：优先 Codex；
-普通 UI 组件、重复性代码、配置表、文案、简单工具函数：可以拆给 DeepSeek；
-DeepSeek 产物必须由 Codex 审核后才能合并。
-```
-
 如本轮需要 DeepSeek 执行子任务，必须在以下文件记录任务卡：
 
 ```text
@@ -281,240 +242,59 @@ AI_TASKS/DEEPSEEK_TASKS.md
 
 ---
 
-# 8. 引擎与工程路线原则
+# 8. 配置优先原则
 
-当前工作流不再默认要求 Web Demo 之后进入某个游戏引擎从 0 开发。
+策划可能频繁调整的内容，不得硬编码。
 
-新的路线是：
-
-```text
-v0.x = Web Demo 原型阶段
-v1.x = Unity 源码学习 / 改造阶段
-v2.x = Unity 独立原型阶段
-v3.x = 可展示垂直切片阶段
-v4.x = 商业化验证阶段
-```
-
-原因：
+Web Demo 阶段优先使用：
 
 ```text
-1. Web Demo 最适合策划快速表达核心玩法和界面流程；
-2. 直接学习完整游戏引擎仍然需要代码基础和工程经验；
-3. Unity 源码项目可以作为学习真实工程结构的中间层；
-4. 通过 AI 修复兼容、解释结构、小步改造，比从 0 创建 Unity 项目更适合当前阶段；
-5. 不再默认创建或维护其他引擎工程，避免路线冲突。
-```
-
----
-
-# 9. Demo 阶段划分
-
-本项目采用“先 Web Demo，再 Unity 源码学习 / 改造”的开发策略。
-
-## v0.x：Web Demo 原型阶段
-
-目标：
-
-- 快速验证核心玩法；
-- 快速验证 UI 信息层级；
-- 快速验证资源循环；
-- 快速进行试玩反馈；
-- 给美术和程序直观展示核心玩法；
-- 为后续 Unity 源码学习 / 改造提供明确方向。
-
-默认独立工作区：
-
-```text
-WEB_DEMO/
-├── README.md
-├── run_web_demo.bat
-├── package.json
-├── index.html
-├── styles.css
-├── game.js
-├── Data/
-├── Assets/
-├── Tools/
-├── Tests/
-├── Docs/
-└── Temp/
-```
-
-辅助工具如关卡编辑器、数值模拟器、配置校验器等，Web 阶段优先放在：
-
-```text
-WEB_DEMO/Tools/
+WEB_DEMO/Data/config/
 ```
 
 详细规则见：
 
 ```text
-DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
-DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
-```
-
-## v1.x：Unity 源码学习 / 改造阶段
-
-目标：
-
-- 筛选可运行的 Unity 源码项目；
-- 检查 Unity 版本、许可证、依赖插件和运行说明；
-- 让 AI 协助修复兼容性问题；
-- 学习项目结构、场景、Prefab、脚本、资源和 UI；
-- 小步改造，让源码项目逐步接近 Web Demo 验证出的方向。
-
-默认工作区：
-
-```text
-UNITY_SOURCE/
-```
-
-详细规则见：
-
-```text
-DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
-```
-
-## v2.x：Unity 独立原型阶段
-
-目标：
-
-- 在理解 Unity 基础后，再决定是否搭建自己的 Unity 原型项目；
-- 不建议在没有完成 v1.x 源码学习前直接从 0 开始。
-
-默认工作区：
-
-```text
-UNITY_PROJECT/
-```
-
-## v3.x：可展示垂直切片阶段
-
-目标：
-
-- 让项目具备对外展示价值；
-- 包括美术方向、完整闭环、基础表现和演示材料。
-
-## v4.x：商业化验证阶段
-
-目标：
-
-- 验证广告、内购、留存、打点、发行渠道、性能和平台适配。
-
----
-
-# 10. NEXT_CODEX_PROMPT 使用规则
-
-`AI_TASKS/NEXT_CODEX_PROMPT.md` 用于保存下一轮交给 Codex 执行的完整提示词。
-
-当 ChatGPT 长对话过长、网页卡顿或上下文过重时，不应继续在聊天中堆积提示词，而应将最终确认的任务提示词写入该文件。
-
-Codex 执行任务时，应优先读取：
-
-- `AI_TASKS/NEXT_CODEX_PROMPT.md`
-- `AI_TASKS/CURRENT_TASK.md`
-- `AI_TASKS/CHANGELOG.md`
-- `AI_TASKS/DEV_LOG.md`
-- `AI_TASKS/DEEPSEEK_TASKS.md`
-
-执行完成后，Codex 应更新：
-
-- `AI_TASKS/CURRENT_TASK.md`
-- `AI_TASKS/CHANGELOG.md`
-- `AI_TASKS/DEV_LOG.md`
-- 必要时更新 `AI_TASKS/NEXT_CODEX_PROMPT.md`
-- 如涉及 DeepSeek 任务拆分，更新 `AI_TASKS/DEEPSEEK_TASKS.md`
-- 如涉及 DeepSeek 产物审核，更新 `AI_TASKS/REVIEW_LOG.md`
-
----
-
-# 11. 通用 Debug Console 规则
-
-所有 Demo 默认应提供一个 `Console` / `Dev` 按钮，作为开发者工具入口。
-
-Console 是 Demo 阶段的开发者工具面板，不代表最终玩家界面。
-
-通用功能只包含跨游戏类型也常用的功能：
-
-```text
-音乐开关；
-音效开关；
-暂停 / 继续；
-重置场景 / 重置 Demo；
-显示 FPS。
-```
-
-FPS 显示规则：
-
-```text
-当 Console 中开启 FPS 显示后，FPS 数值应显示在游戏画面的右下角。
-```
-
-特定游戏相关功能，例如加资源、跳转时间、生成敌人、解锁节点等，不属于通用 Console 规则。如某个项目需要，应在该项目的任务卡或 `DESIGN_HUB/10_OPEN_QUESTIONS.md` 中单独确认。
-
-详细规则见：
-
-```text
-DESIGN_HUB/13_DEBUG_CONSOLE.md
+AI_RULES/09_CONFIG_FIRST_RULE.md
 ```
 
 ---
 
-# 12. 默认开发辅助功能
+# 9. 试玩反馈转任务
 
-所有项目默认应具备一组不属于具体玩法的开发辅助能力。
+试玩反馈不应直接变成开发冲动，必须先分类、定级，再生成任务。
 
-这些功能用于提高 Demo 开发、调试、测试和展示效率。
-
-默认开发辅助功能包括：
+流程见：
 
 ```text
-Console / Dev 面板；
-FPS 显示；
-音乐开关；
-音效开关；
-暂停 / 继续；
-重置场景 / Demo；
-Web Demo 一键启动 bat；
-Vite 或等价本地 Web 服务；
-Smoke Test；
-版本号显示。
-```
-
-根据项目类型，立项阶段还应分析是否需要：
-
-```text
-关卡编辑器；
-棋盘 / 地图 / 房间编辑器；
-数值模拟器；
-配置表编辑器；
-内容批量生成工具；
-自动试玩 / 难度评估工具；
-随机种子回放工具；
-导入 / 导出 JSON、CSV 或 Excel 工具。
-```
-
-详细规则见：
-
-```text
-DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
-DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+AI_TASKS/FEEDBACK_TO_TASK.md
 ```
 
 ---
 
-# 13. 当前已确认的通用边界摘要
+# 10. Unity 源码筛选
+
+进入 Unity 源码学习阶段前，必须先对候选源码评分。
+
+评分表见：
+
+```text
+UNITY_SOURCE/SOURCE_CANDIDATES.md
+```
+
+---
+
+# 11. 当前已确认的通用边界摘要
 
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
 项目启动：新项目先通过 00_PROJECT_CANVAS.md 完成立项访谈，并通过 17_AUXILIARY_TOOLS_PLAN.md 分析辅助工具需求。
-Demo 重点：核心玩法、界面流程、关键反馈、表现方向。
+状态同步：每轮关键任务后更新 PROJECT_STATUS.md。
+版本推进：按 18_VERSION_GATE.md 控制阶段推进。
+暂不做：按 19_NOT_NOW.md 防止 AI 过度发散。
+配置优先：策划可能频繁调整的内容，不得硬编码。
+Demo 展示：Demo 必须能让美术、程序、制作人或外部评审快速看懂。
 开发顺序：Web Demo → Unity 源码学习 / 改造 → Unity 独立原型。
-AI 分工：ChatGPT 管立项访谈、辅助工具规划、方案和任务拆解，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
-修改原则：AI 不确定时写入 OPEN_QUESTIONS，不得擅自改核心方向。
-Console 原则：只默认包含通用开发者工具，项目特定调试功能需单独确认。
-默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
-辅助工具原则：立项阶段就要判断项目是否需要关卡编辑器、数值模拟器、配置工具、自动测试或内容批量生成工具。
 Web Demo 路径原则：Web Demo 使用 WEB_DEMO/ 独立工作区。
 Unity 路线原则：先做源码学习 / 改造，不默认从 0 创建 Unity 项目。
 根目录瘦身原则：不要在根目录默认创建具体工程目录，具体文件应放入 WEB_DEMO/、UNITY_SOURCE/ 或 UNITY_PROJECT/ 内部。
