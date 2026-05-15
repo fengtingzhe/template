@@ -23,10 +23,11 @@
 14. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 15. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 16. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
-17. AI_TASKS/CURRENT_TASK.md
-18. AI_TASKS/NEXT_CODEX_PROMPT.md
-19. AI_TASKS/DEEPSEEK_TASKS.md
-20. AI_RULES/06_VALIDATION_CHECKLIST.md
+17. DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+18. AI_TASKS/CURRENT_TASK.md
+19. AI_TASKS/NEXT_CODEX_PROMPT.md
+20. AI_TASKS/DEEPSEEK_TASKS.md
+21. AI_RULES/06_VALIDATION_CHECKLIST.md
 ```
 
 ---
@@ -37,9 +38,12 @@
 
 ```text
 DESIGN_HUB/00_PROJECT_CANVAS.md
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
 ```
 
-然后根据其中的“ChatGPT 立项访谈问题清单”向用户提问。
+然后根据 `00_PROJECT_CANVAS.md` 中的“ChatGPT 立项访谈问题清单”向用户提问。
+
+立项访谈不仅要明确游戏类型、题材、目标用户和核心玩法，还要主动分析本项目可能需要哪些配套辅助工具。
 
 在用户确认前，不要直接进入开发，也不要直接生成 Codex 开发任务。
 
@@ -49,9 +53,11 @@ DESIGN_HUB/00_PROJECT_CANVAS.md
 先提问；
 用户回答；
 AI 总结立项档案草案；
+AI 分析辅助工具需求；
 用户确认；
 写入 GitHub；
 提炼正式设计文档；
+提炼辅助工具规划；
 再生成 NEXT_CODEX_PROMPT。
 ```
 
@@ -78,7 +84,7 @@ Codex 执行任务时，必须读取该文件。
 如果是新项目立项阶段，AI 应继续说明：
 
 ```text
-我将先进行立项访谈，暂不进入开发。
+我将先进行立项访谈，暂不进入开发，并会同时分析本项目可能需要的辅助工具。
 ```
 
 然后开始向用户提问。
@@ -90,7 +96,9 @@ Codex 执行任务时，必须读取该文件。
 - 不阅读规则就直接改代码；
 - 只看当前任务，不看设计边界；
 - 忽略 `DESIGN_HUB/00_PROJECT_CANVAS.md`；
+- 忽略 `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`；
 - 忽略 `DESIGN_HUB/09_DECISIONS.md`；
 - 忽略 `AI_TASKS/NEXT_CODEX_PROMPT.md`；
 - 新项目未完成立项访谈就直接开发；
+- 新项目未进行辅助工具需求分析就直接开发；
 - 遇到不明确问题时擅自决定。
