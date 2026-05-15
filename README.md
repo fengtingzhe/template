@@ -55,11 +55,11 @@ ProjectName/
 ├── AI_RULES/
 ├── AI_TASKS/
 ├── WEB_DEMO/
+├── UNITY_SOURCE/
+├── UNITY_PROJECT/
 ├── Docs/
 ├── Data/
 ├── Assets/
-├── Scenes/
-├── Scripts/
 ├── Tools/
 ├── Tests/
 ├── Builds/
@@ -73,9 +73,10 @@ DESIGN_HUB 管方向；
 AI_RULES 管 AI；
 AI_TASKS 管执行；
 WEB_DEMO 管 Web 原型；
+UNITY_SOURCE 管 Unity 源码学习 / 改造；
+UNITY_PROJECT 管未来自建 Unity 原型；
 Docs 管资料；
-Data 管 Godot 或正式项目配置；
-Scripts / Scenes 管 Godot 或正式工程实现；
+Data 管通用数据资料；
 Builds 管构建输出。
 ```
 
@@ -99,10 +100,11 @@ Builds 管构建输出。
 11. DESIGN_HUB/10_OPEN_QUESTIONS.md
 12. DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 13. DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
-14. AI_TASKS/CURRENT_TASK.md
-15. AI_TASKS/NEXT_CODEX_PROMPT.md
-16. AI_TASKS/DEEPSEEK_TASKS.md
-17. AI_RULES/06_VALIDATION_CHECKLIST.md
+14. DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+15. AI_TASKS/CURRENT_TASK.md
+16. AI_TASKS/NEXT_CODEX_PROMPT.md
+17. AI_TASKS/DEEPSEEK_TASKS.md
+18. AI_RULES/06_VALIDATION_CHECKLIST.md
 ```
 
 阅读后，AI 必须先回复：
@@ -156,15 +158,15 @@ DESIGN_HUB/10_OPEN_QUESTIONS.md
 
 ```text
 ChatGPT：制作人 / 总策划 / 任务拆解 / 产品复审
-Godot：游戏编辑器，Demo 阶段主引擎
-Codex：主程 / 架构 / 代码审核 / Bug 修复 / AI 任务调度者
-DeepSeek：模块开发 / 批量配置 / 重复性代码
+Codex：Web Demo 主开发 / Unity 源码体检 / 兼容性修复 / 代码审核 / AI 任务调度者
+DeepSeek：模块开发 / 批量配置 / 重复性代码 / 文档整理
 Figma：UI 原型和界面表达
 Image 2 / 即梦：图片和素材方向
 Seedance / 即梦：动画和投放视频
 Excel / Python：数值与数据分析
 Notion：工作流、文档、知识库、任务沉淀
 GitHub：代码版本管理
+Unity：v1.x 之后用于源码学习、改造和未来独立原型
 ```
 
 ---
@@ -202,33 +204,37 @@ AI_TASKS/DEEPSEEK_TASKS.md
 
 ---
 
-# 7. 引擎选择原则
+# 7. 引擎与工程路线原则
 
-当前工作流的目标是快速搭建可试玩、可展示、可验证的游戏 Demo，而不是一开始完成复杂商业化游戏。
+当前工作流不再默认要求 Web Demo 之后进入某个游戏引擎从 0 开发。
 
-因此，默认推荐使用 Godot 作为 Demo 阶段的主引擎。
+新的路线是：
+
+```text
+v0.x = Web Demo 原型阶段
+v1.x = Unity 源码学习 / 改造阶段
+v2.x = Unity 独立原型阶段
+v3.x = 可展示垂直切片阶段
+v4.x = 商业化验证阶段
+```
 
 原因：
 
 ```text
-1. Godot 更轻量，适合快速启动和快速迭代；
-2. Godot 的 2D 能力适合移动端竖屏原型；
-3. GDScript 简洁，便于 AI 生成、阅读和修改；
-4. Godot 项目文本化程度较高，适合 Codex / DeepSeek 处理；
-5. 策划更容易理解场景、脚本和数据之间的关系。
+1. Web Demo 最适合策划快速表达核心玩法和界面流程；
+2. 直接学习完整游戏引擎仍然需要代码基础和工程经验；
+3. Unity 源码项目可以作为学习真实工程结构的中间层；
+4. 通过 AI 修复兼容、解释结构、小步改造，比从 0 创建 Unity 项目更适合当前阶段；
+5. 不再默认创建或维护其他引擎工程，避免路线冲突。
 ```
-
-Unity 更适合进入商业化开发阶段后再评估。
 
 ---
 
 # 8. Demo 阶段划分
 
-本项目采用“先 Web Demo，后 Godot Demo”的开发策略。
+本项目采用“先 Web Demo，再 Unity 源码学习 / 改造”的开发策略。
 
-## Web Demo 阶段
-
-版本号：`v0.x`
+## v0.x：Web Demo 原型阶段
 
 目标：
 
@@ -236,7 +242,8 @@ Unity 更适合进入商业化开发阶段后再评估。
 - 快速验证 UI 信息层级；
 - 快速验证资源循环；
 - 快速进行试玩反馈；
-- 为 Godot Demo 提供明确方向。
+- 给美术和程序直观展示核心玩法；
+- 为后续 Unity 源码学习 / 改造提供明确方向。
 
 默认独立工作区：
 
@@ -256,25 +263,59 @@ WEB_DEMO/
 └── Temp/
 ```
 
-Web Demo 不应与 Godot 工程文件混放。
-
 详细规则见：
 
 ```text
 DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 ```
 
-## Godot Demo 阶段
-
-版本号：`v1.x`
+## v1.x：Unity 源码学习 / 改造阶段
 
 目标：
 
-- 将已经验证过的核心玩法迁移到 Godot；
-- 加入正式场景结构；
-- 加入 Godot UI；
-- 加入角色、动画、反馈和资源管理；
-- 为后续可展示垂直切片做准备。
+- 筛选可运行的 Unity 源码项目；
+- 检查 Unity 版本、许可证、依赖插件和运行说明；
+- 让 AI 协助修复兼容性问题；
+- 学习项目结构、场景、Prefab、脚本、资源和 UI；
+- 小步改造，让源码项目逐步接近 Web Demo 验证出的方向。
+
+默认工作区：
+
+```text
+UNITY_SOURCE/
+```
+
+详细规则见：
+
+```text
+DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+```
+
+## v2.x：Unity 独立原型阶段
+
+目标：
+
+- 在理解 Unity 基础后，再决定是否搭建自己的 Unity 原型项目；
+- 不建议在没有完成 v1.x 源码学习前直接从 0 开始。
+
+默认工作区：
+
+```text
+UNITY_PROJECT/
+```
+
+## v3.x：可展示垂直切片阶段
+
+目标：
+
+- 让项目具备对外展示价值；
+- 包括美术方向、完整闭环、基础表现和演示材料。
+
+## v4.x：商业化验证阶段
+
+目标：
+
+- 验证广告、内购、留存、打点、发行渠道、性能和平台适配。
 
 ---
 
@@ -384,10 +425,11 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 ```text
 当前目标：先做 Demo，不直接追求完整游戏。
 Demo 重点：核心玩法、界面流程、关键反馈、表现方向。
-开发顺序：先 Web Demo，后 Godot Demo。
+开发顺序：Web Demo → Unity 源码学习 / 改造 → Unity 独立原型。
 AI 分工：ChatGPT 管方案，Codex 管工程和任务调度，DeepSeek 管模块，策划管方向和体验。
 修改原则：AI 不确定时写入 OPEN_QUESTIONS，不得擅自改核心方向。
 Console 原则：只默认包含通用开发者工具，项目特定调试功能需单独确认。
 默认开发辅助功能：Web Demo 默认应提供一键启动 bat、本地服务、Smoke Test 和基础版本识别能力。
-Web Demo 路径原则：Web Demo 使用 WEB_DEMO/ 独立工作区，不与 Godot 工程混放。
+Web Demo 路径原则：Web Demo 使用 WEB_DEMO/ 独立工作区。
+Unity 路线原则：先做源码学习 / 改造，不默认从 0 创建 Unity 项目。
 ```
