@@ -16,15 +16,18 @@
 - [ ] 数值验证
 - [ ] 商业演示
 - [ ] 工程基础
+- [ ] Unity 源码学习
+- [ ] Unity 小步改造
 
 ---
 
-## 当前 Demo 阶段
+## 当前项目阶段
 
-- [ ] v0.x / Web Demo
-- [ ] v1.x / Godot Demo
-- [ ] v2.x / 可展示垂直切片
-- [ ] v3.x / 商业化验证
+- [ ] v0.x / Web Demo 原型
+- [ ] v1.x / Unity 源码学习 / 改造
+- [ ] v2.x / Unity 独立原型
+- [ ] v3.x / 可展示垂直切片
+- [ ] v4.x / 商业化验证
 
 ---
 
@@ -145,6 +148,31 @@ DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md
 
 ---
 
+## Unity 源码学习 / 改造要求
+
+如果本任务涉及 Unity 源码学习 / 改造，默认应参考：
+
+```text
+DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md
+```
+
+默认要求：
+
+- [ ] Unity 源码项目位于 `UNITY_SOURCE/`；
+- [ ] 先做源码体检，再做改造；
+- [ ] 已检查 Unity 版本；
+- [ ] 已检查许可证；
+- [ ] 已检查依赖插件；
+- [ ] 已检查是否缺失资源；
+- [ ] 已检查是否依赖后端或联网服务；
+- [ ] 首次运行报错已记录，如有；
+- [ ] 兼容性修复记录到 `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如适用；
+- [ ] 源码结构分析记录到 `UNITY_SOURCE/STRUCTURE_NOTES.md` 或 `Docs/UnitySourceAnalysis/`，如适用；
+- [ ] 源码未跑通前不做大规模改造；
+- [ ] 不绕过许可证或授权限制。
+
+---
+
 ## 默认开发辅助功能要求
 
 如果本任务涉及 Web Demo，默认应参考：
@@ -203,4 +231,5 @@ DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md
 7. 是否更新了 `AI_TASKS/NEXT_CODEX_PROMPT.md`，如需要；
 8. 是否进行了任务归属判断；
 9. 如拆分给 DeepSeek，是否更新了 `AI_TASKS/DEEPSEEK_TASKS.md`；
-10. 如合并 DeepSeek 产物，是否更新了 `AI_TASKS/REVIEW_LOG.md`。
+10. 如合并 DeepSeek 产物，是否更新了 `AI_TASKS/REVIEW_LOG.md`；
+11. 如涉及 Unity 源码学习，是否更新了 `UNITY_SOURCE/` 下的体检、兼容或结构记录。
