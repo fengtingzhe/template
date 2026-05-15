@@ -13,7 +13,7 @@ Console 应保持通用，不应默认包含某个具体游戏才需要的作弊
 ## 默认入口
 
 - Web Demo：界面右上角 `Console` / `Dev` 按钮；
-- Godot Demo：右上角 `Console` / `Dev` 按钮或调试快捷键。
+- 后续引擎 Demo：右上角 `Console` / `Dev` 按钮或调试快捷键。
 
 ---
 
@@ -96,15 +96,8 @@ AI_TASKS/NEXT_CODEX_PROMPT.md
 
 ---
 
-## Godot Demo 实现建议
+## 后续引擎 Demo 实现建议
 
-后续进入 Godot 阶段后，可以实现为：
+后续进入引擎 Demo 阶段后，可以在对应引擎的 UI 系统中实现 Console 面板和 FPS 显示。
 
-```text
-Scenes/UI/DebugConsole.tscn
-Scripts/UI/DebugConsole.gd
-```
-
-FPS 显示可以作为独立小 Label，锚点固定在游戏画面右下角。
-
-但在 Web Demo 阶段，不需要提前创建 Godot Console 场景。
+但在 Web Demo 阶段，不需要提前创建后续引擎的 Console 场景。

@@ -107,9 +107,4 @@ Demo 第一版 HUD 只保留必要信息。
 
 默认使用 Figma / FigJam 表达 UI 和流程。
 
-如需在 Godot 中直接实现 UI Demo，应在任务卡中明确允许修改：
-
-```text
-Scenes/UI/
-Scripts/UI/
-```
+如需在后续引擎中直接实现 UI Demo，应在任务卡中明确允许修改对应的 UI 场景和脚本目录。

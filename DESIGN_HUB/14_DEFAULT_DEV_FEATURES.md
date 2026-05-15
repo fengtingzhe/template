@@ -12,16 +12,16 @@
 
 | 功能 | 阶段 | 是否默认需要 | 说明 |
 |---|---|---|---|
-| Console / Dev 面板 | Web Demo / Godot Demo | 是 | 游戏内开发者工具入口，具体规则见 `DESIGN_HUB/13_DEBUG_CONSOLE.md` |
-| 显示 FPS | Web Demo / Godot Demo | 是 | 开启后显示在游戏画面右下角 |
-| 音乐开关 | Web Demo / Godot Demo | 是 | 用于调试和展示 |
-| 音效开关 | Web Demo / Godot Demo | 是 | 用于调试和展示 |
-| 暂停 / 继续 | Web Demo / Godot Demo | 是 | 方便观察和调试 |
-| 重置场景 / Demo | Web Demo / Godot Demo | 是 | 快速回到初始状态 |
+| Console / Dev 面板 | Web Demo / 后续引擎 Demo | 是 | 游戏内开发者工具入口，具体规则见 `DESIGN_HUB/13_DEBUG_CONSOLE.md` |
+| 显示 FPS | Web Demo / 后续引擎 Demo | 是 | 开启后显示在游戏画面右下角 |
+| 音乐开关 | Web Demo / 后续引擎 Demo | 是 | 用于调试和展示 |
+| 音效开关 | Web Demo / 后续引擎 Demo | 是 | 用于调试和展示 |
+| 暂停 / 继续 | Web Demo / 后续引擎 Demo | 是 | 方便观察和调试 |
+| 重置场景 / Demo | Web Demo / 后续引擎 Demo | 是 | 快速回到初始状态 |
 | 一键启动 bat | Web Demo | 是 | Windows 下启动本地服务并打开 Demo |
 | Vite 本地服务 | Web Demo | 是 | 运行网页 Demo，避免直接双击 HTML 产生路径或权限问题 |
 | Smoke Test | Web Demo | 建议 | 快速确认 Demo 是否能打开 |
-| 版本号显示 | Web Demo / Godot Demo | 建议 | 方便确认当前版本 |
+| 版本号显示 | Web Demo / 后续引擎 Demo | 建议 | 方便确认当前版本 |
 
 ---
 

@@ -2,9 +2,9 @@
 
 ## 定位
 
-Web Demo 是 Godot Demo 之前的快速玩法验证工程。
+Web Demo 是后续引擎 Demo 之前的快速玩法验证工程。
 
-Web Demo 不应与 Godot 工程文件混放。
+Web Demo 不应与后续引擎工程文件混放。
 
 Web Demo 不是 `Builds/` 中的临时构建产物，而是一个独立的原型工程。
 
@@ -73,7 +73,7 @@ DESIGN_HUB/12_DEMO_SCOPE.md
 Scenes/
 Scripts/
 project.godot
-Godot 相关资源
+后续引擎相关资源
 ```
 
 ---
@@ -157,10 +157,10 @@ AI_TASKS/CURRENT_TASK.md
 ## Web Demo 开发原则
 
 - Web Demo 优先验证核心玩法和界面信息，不追求最终工程架构；
-- Web Demo 不应污染 Godot 工程目录；
+- Web Demo 不应污染后续引擎工程目录；
 - Web Demo 的配置、测试、工具脚本都应优先放在 `WEB_DEMO/` 内；
 - Web Demo 可以有自己的 `README.md`、`package.json` 和启动脚本；
-- Web Demo 进入 Godot 阶段后，可以保留为参考原型，不应直接删除。
+- Web Demo 进入后续引擎阶段后，可以保留为参考原型，不应直接删除。
 
 ---
 
@@ -171,6 +171,6 @@ AI_TASKS/CURRENT_TASK.md
 不要把 Web Demo 配置混进根目录 Data/；
 不要把 Web Demo 工具脚本混进根目录 Tools/；
 不要把 Web Demo 测试混进根目录 Tests/；
-不要在 Web Demo 阶段修改 Godot 工程文件；
+不要在 Web Demo 阶段修改后续引擎工程文件；
 不要把 WEB_DEMO/ 误当作最终上线构建目录。
 ```
