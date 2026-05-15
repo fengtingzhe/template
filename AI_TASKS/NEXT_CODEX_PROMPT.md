@@ -29,11 +29,12 @@
 15. `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`
 16. `DESIGN_HUB/15_WEB_DEMO_WORKSPACE.md`
 17. `DESIGN_HUB/16_UNITY_SOURCE_WORKFLOW.md`
-18. `AI_TASKS/CURRENT_TASK.md`
-19. `AI_TASKS/CHANGELOG.md`
-20. `AI_TASKS/DEV_LOG.md`
-21. `AI_TASKS/DEEPSEEK_TASKS.md`
-22. `AI_RULES/06_VALIDATION_CHECKLIST.md`
+18. `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`
+19. `AI_TASKS/CURRENT_TASK.md`
+20. `AI_TASKS/CHANGELOG.md`
+21. `AI_TASKS/DEV_LOG.md`
+22. `AI_TASKS/DEEPSEEK_TASKS.md`
+23. `AI_RULES/06_VALIDATION_CHECKLIST.md`
 
 ---
 
@@ -48,12 +49,20 @@ DESIGN_HUB/03_PLAYER_EXPERIENCE.md
 DESIGN_HUB/12_DEMO_SCOPE.md
 ```
 
+还必须确认项目已经进行辅助工具需求分析，并初步填写：
+
+```text
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+```
+
 如果 `00_PROJECT_CANVAS.md` 仍处于“待立项访谈”，或核心玩法、目标用户、最小 Demo 目标尚未明确，Codex 不应开始开发。
+
+如果 `17_AUXILIARY_TOOLS_PLAN.md` 仍未判断本项目是否需要关卡编辑器、数值工具、配置工具、批量生成工具、自动测试或模拟工具，Codex 不应直接开始开发游戏本体。
 
 此时应提示：
 
 ```text
-当前项目尚未完成立项访谈，建议先由 ChatGPT 继续向用户提问并完善 DESIGN_HUB/00_PROJECT_CANVAS.md。
+当前项目尚未完成立项访谈或辅助工具需求分析，建议先由 ChatGPT 继续向用户提问并完善 DESIGN_HUB/00_PROJECT_CANVAS.md 与 DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md。
 ```
 
 ---
@@ -138,6 +147,15 @@ WEB_DEMO/
 AI_TASKS/
 DESIGN_HUB/11_PLAYTEST_FEEDBACK.md
 DESIGN_HUB/12_DEMO_SCOPE.md
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+```
+
+如果本轮涉及辅助工具，默认应优先使用：
+
+```text
+WEB_DEMO/Tools/
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+AI_TASKS/
 ```
 
 如果本轮涉及 Unity 源码学习 / 改造，默认应优先使用：
@@ -165,7 +183,9 @@ Docs/UnitySourceAnalysis/
 - 不要默认创建其他引擎工程；
 - 不要在没有明确进入 v2.x 前从 0 创建 Unity 项目；
 - 不要绕过 Unity 源码许可证或授权限制；
-- 不要在项目尚未完成立项访谈时开始开发。
+- 不要在项目尚未完成立项访谈时开始开发；
+- 不要在未分析辅助工具需求时直接开发大量关卡、数值或内容；
+- 不要让辅助工具开发规模超过当前 Demo 本体。
 
 ---
 
@@ -193,6 +213,30 @@ WEB_DEMO/
 ├── Tests/
 ├── Docs/
 └── Temp/
+```
+
+---
+
+## 辅助工具要求
+
+如果本轮涉及关卡编辑器、数值模拟器、配置工具、内容批量生成、自动测试、难度评估或其他配套工具，默认应参考：
+
+```text
+DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md
+```
+
+默认原则：
+
+```text
+先做最小可用版本；
+优先 Web 工具；
+优先放在 WEB_DEMO/Tools/；
+优先让策划能独立配置；
+优先支持导入 / 导出 JSON；
+如策划常用 Excel，可考虑 CSV / Excel 导入导出；
+不要过早做复杂后台；
+不要让工具开发超过游戏 Demo 本体；
+工具必须服务当前验证目标。
 ```
 
 ---
@@ -268,17 +312,20 @@ WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
 1. 待填写；
 2. 待填写；
 3. 项目已经完成立项访谈，或本轮明确是“完善立项档案”任务；
-4. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
-5. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检；
-6. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
-7. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
-8. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
-9. 已完成任务归属判断；
-10. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
-11. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
-12. 已更新 `AI_TASKS/CHANGELOG.md`；
-13. 已更新 `AI_TASKS/DEV_LOG.md`；
-14. 已更新 `AI_TASKS/CURRENT_TASK.md`。
+4. 项目已经完成辅助工具需求分析，或本轮明确是“完善辅助工具规划”任务；
+5. 如涉及 Web Demo，文件位于 `WEB_DEMO/` 独立工作区；
+6. 如涉及辅助工具，文件优先位于 `WEB_DEMO/Tools/` 或对应阶段工作区；
+7. 如涉及 Unity 源码学习，文件位于 `UNITY_SOURCE/`，且已完成源码体检；
+8. 默认开发辅助功能符合 `DESIGN_HUB/14_DEFAULT_DEV_FEATURES.md`；
+9. 辅助工具规划符合 `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`；
+10. 通用 Console 功能符合 `DESIGN_HUB/13_DEBUG_CONSOLE.md`；
+11. 开启 FPS 后，FPS 数值显示在游戏画面的右下角；
+12. 已完成任务归属判断；
+13. 如拆给 DeepSeek，已更新 `AI_TASKS/DEEPSEEK_TASKS.md`；
+14. 如合并 DeepSeek 产物，已更新 `AI_TASKS/REVIEW_LOG.md`；
+15. 已更新 `AI_TASKS/CHANGELOG.md`；
+16. 已更新 `AI_TASKS/DEV_LOG.md`；
+17. 已更新 `AI_TASKS/CURRENT_TASK.md`。
 
 ---
 
@@ -289,7 +336,8 @@ WEB_DEMO/run_web_demo.bat 不得依赖个人电脑绝对路径；
 3. `AI_TASKS/CURRENT_TASK.md`
 4. `AI_TASKS/DEEPSEEK_TASKS.md`，如涉及任务拆分
 5. `AI_TASKS/REVIEW_LOG.md`，如涉及 DeepSeek 产物审核
-6. `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如涉及 Unity 兼容性修复
-7. `UNITY_SOURCE/STRUCTURE_NOTES.md`，如涉及 Unity 源码结构学习
+6. `DESIGN_HUB/17_AUXILIARY_TOOLS_PLAN.md`，如涉及辅助工具新增、调整或延期
+7. `UNITY_SOURCE/COMPATIBILITY_LOG.md`，如涉及 Unity 兼容性修复
+8. `UNITY_SOURCE/STRUCTURE_NOTES.md`，如涉及 Unity 源码结构学习
 
 必要时，将下一轮建议写入本文件。
